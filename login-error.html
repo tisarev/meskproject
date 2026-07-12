@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+
+    <link href="./assets/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="./assets/css/style.css?v=1.0" rel="stylesheet" type="text/css">
+
+    <script src="./components/my-infoblock.js" defer></script>
+    <script src="./components/my-footer.js" defer></script>
+
+    <title>Главная</title>
+</head>
+<body>
+    <div class="body-fon">
+        <main>
+            <div class="container container-flex">
+                <div class="body-fon__content">
+                    <div class="logo">
+                        <img src="./assets/img/logo.jpg">
+                    </div>
+                    <h1>Вход в личный кабинет <br>юридического лица</h1>
+                    <p><b>Впервые у нас?</b>&emsp;<a href=""><b>Зарегистрируйтесь</b></a></p>
+                    <p>Вход для зарегистрированных пользователей</p>
+                    <form action="" method="get">
+                        <div class="form-toggle">
+                            <div class="form-toggle_item">
+                                <input type="radio" id="radio-legal-entity" name="face" value="radio-legal-entity" checked>
+                                <label for="radio-legal-entity">Юридическое лицо</label>
+                            </div>
+                            <div class="form-toggle_item">
+                                <input type="radio" id="radio-individual" name="face" value="radio-individual">
+                                <label for="radio-individual">ИП/Физическое лицо <small>(по нежилым помещениям)</small></label>
+                            </div>
+                        </div>
+                        <div class="input-group error">
+                            <label for="inn">ИНН</label>
+                            <div class="input-wrapper"><!--disabled класс для блокировки--><!--loading класс для блокировки-->
+                                <input type="text" id="inn" name="inn" inputmode="numeric" pattern="\d{10}|\d{12}" maxlength="12" placeholder="10 или 12 цифр" required>
+                            </div>
+                            <div class="error-text">
+                                Не правильно введен ИНН
+                            </div>
+                        </div>
+                        <div class="input-group error"><!--error класс для ошибки-->
+                            <label for="kpp">КПП <small>(указывается только для филиалов)</small></label>
+                            <div class="input-wrapper">
+                                <input type="text" id="kpp" name="kpp" inputmode="numeric" pattern="\d{9}" maxlength="9" placeholder="9 цифр" required>
+                            </div>
+                            <div class="error-text">
+                                Не правильно введен КПП
+                            </div>
+                        </div>
+                        <div class="warning-text">
+                            Не удалось найти ИНН и КПП по указанным данным. <br>Пожалуйста, <a href="">регистрацию в системе</a>, чтобы продолжить работу. 
+                        </div>
+                        <div class="form-toggle form-toggle__authorization-method" data-toggle-group="entityType">
+                            Способ авторизации:
+                            <div class="form-toggle_item">
+                                <input type="radio" id="radio-password" name="authorization-method" value="radio-password" checked>
+                                <label for="radio-password">Пароль</label>
+                            </div>
+                            <div class="form-toggle_item">
+                                <input type="radio" id="radio-mail" name="authorization-method" value="radio-mail">
+                                <label for="radio-mail">Почта</label>
+                            </div>
+                            <div class="form-toggle_item">
+                                <input type="radio" id="radio-sms" name="authorization-method" value="radio-sms">
+                                <label for="radio-sms">СМС</label>
+                            </div>
+                        </div>
+                        <div class="form-toggle__selected" data-toggle-target="entityType" data-toggle-value="radio-password">
+                            <div class="input-group">
+                                <label>Пароль</label>
+                                <div class="input-wrapper">
+                                    <input type="password" placeholder="Введите пароль" required>
+                                    <button type="button" class="toggle-password">
+                                        <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                        <path class="eye-open" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"/>
+                                        <circle class="eye-open" cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                        <path class="eye-closed" style="display:none" d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" stroke="currentColor" stroke-width="2"/>
+                                        <line class="eye-closed" style="display:none" x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="button-group">
+                                <button type="submit" class="btn-primary" disabled>Войти</button>
+                                <a href="./forgot-pass.html">Забыли пароль?</a>
+                            </div>
+                        </div>
+                        <div class="form-toggle__selected" data-toggle-target="entityType" data-toggle-value="radio-mail">
+                            <div class="input-group">
+                                <label>Электронная почта</label>
+                                <div class="input-wrapper">
+                                    <input type="email" placeholder="Введите почту" required>
+                                </div>
+                            </div>
+                            <div class="button-group">
+                                <button type="submit" class="btn-primary" disabled>Войти</button>
+                                <a href="./forgot-pass.html">Забыли пароль?</a>
+                            </div>
+                        </div>
+                        <div class="form-toggle__selected" data-toggle-target="entityType" data-toggle-value="radio-sms">
+                            <div class="input-group">
+                                <label>Номер телефона</label>
+                                <div class="input-wrapper">
+                                    <input type="tel" class="phone-mask" placeholder="+7 (___) ___-__-__" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}" required>
+                                </div>
+                            </div>
+                            <div class="button-group">
+                                <button type="submit" class="btn-primary" disabled>Выслать код</button>
+                            </div>
+                        </div>
+                    </form>
+                    <p>Вход для зарегистрированных пользователей</p>
+                    <p>При возникновении проблем со входом в личный кабинет, вы можете обратиться в <a href="">службу технической поддержки</a></p>
+                </div>
+                <my-infoblock></my-infoblock>
+            </div>
+        </main>
+        <div class="footer">
+            <div class="container">
+                <my-footer></my-footer>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/main.js" defer></script>
+</body>
+</html>

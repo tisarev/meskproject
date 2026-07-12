@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+
+    <link href="./assets/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="./assets/css/style.css?v=1.0" rel="stylesheet" type="text/css">
+
+    <script src="./components/my-infoblock.js" defer></script>
+    <script src="./components/my-footer.js" defer></script>
+
+    <title>Главная</title>
+</head>
+<body>
+    <div class="body-fon">
+        <main>
+            <div class="container container-flex">
+                <div class="body-fon__content">
+                    <div class="logo">
+                        <img src="./assets/img/logo.jpg">
+                    </div>
+                    <h1>Регистрация в личном кабинете</h1>
+                    <p><a href="./login.html"><b>Вернуться к входу</b></a></p>
+                    <form action="" method="get">
+                        <div class="form-toggle" data-toggle-group="entityType">
+                            <div class="form-toggle_item">
+                                <input type="radio" id="radio-legal-entity" name="face" value="radio-legal-entity" checked>
+                                <label for="radio-legal-entity">Юридическое лицо</label>
+                            </div>
+                            <div class="form-toggle_item">
+                                <input type="radio" id="radio-individual" name="face" value="radio-individual">
+                                <label for="radio-individual">ИП/Физическое лицо <small>(по нежилым помещениям)</small></label>
+                            </div>
+                        </div>
+                        <div data-toggle-target="entityType" data-toggle-value="radio-legal-entity">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="inn">ИНН</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="inn" name="inn" inputmode="numeric" pattern="\d{10}|\d{12}" maxlength="12" placeholder="10 или 12 цифр" required>
+                                    </div>
+                                </div>
+                                <div class="input-group ">
+                                    <label for="kpp">КПП <small>(указывается только для филиалов)</small></label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="kpp" name="kpp" inputmode="numeric" pattern="\d{9}" maxlength="9" placeholder="9 цифр" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="text-surname">Фамилия</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="text-surname" required>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="text-name">Имя</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="text-name" required>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="texxtpatronymic">Отчество</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="text-patronymic" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="post-person">Должность ответственного лица</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="post-person">
+                                </div>
+                            </div>
+                            <div class="button-group">
+                                <button type="submit" class="btn-primary">Зарегистрироваться</button>
+                            </div>
+                        </div>
+                        <div data-toggle-target="entityType" data-toggle-value="radio-individual">1</div>
+                    </form>
+                </div>
+                <my-infoblock></my-infoblock>
+            </div>
+        </main>
+        <div class="footer">
+            <div class="container">
+                <my-footer></my-footer>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/main.js" defer></script>
+</body>
+</html>

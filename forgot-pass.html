@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+
+    <link href="./assets/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="./assets/css/style.css?v=1.0" rel="stylesheet" type="text/css">
+
+    <script src="./components/my-infoblock.js" defer></script>
+    <script src="./components/my-footer.js" defer></script>
+
+    <title>Главная</title>
+</head>
+<body>
+    <div class="body-fon">
+        <main>
+            <div class="container container-flex">
+                <div class="body-fon__content">
+                    <div class="logo">
+                        <img src="./assets/img/logo.jpg">
+                    </div>
+                    <h1>Восстановление доступа</h1>
+                    <p>Если вы забыли пароль, необходимо сбросить старый и ввести новый. <br>На эл.почту/телефон придет код для изменения пароля.</p>
+                    <form action="" method="get">
+                        <div class="form-toggle">
+                            <div class="form-toggle_item">
+                                <input type="radio" id="radio-legal-entity" name="face" value="radio-legal-entity" checked>
+                                <label for="radio-legal-entity">Юридическое лицо</label>
+                            </div>
+                            <div class="form-toggle_item">
+                                <input type="radio" id="radio-individual" name="face" value="radio-individual">
+                                <label for="radio-individual">ИП/Физическое лицо <small>(по нежилым помещениям)</small></label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="inn">ИНН</label>
+                            <div class="input-wrapper"><!--disabled класс для блокировки--><!--loading класс для блокировки-->
+                                <input type="text" id="inn" name="inn" inputmode="numeric" pattern="\d{10}|\d{12}" maxlength="12" placeholder="10 или 12 цифр" required>
+                            </div>
+                        </div>
+                        <div class="input-group "><!--error класс для ошибки-->
+                            <label for="kpp">КПП <small>(указывается только для филиалов)</small></label>
+                            <div class="input-wrapper">
+                                <input type="text" id="kpp" name="kpp" inputmode="numeric" pattern="\d{9}" maxlength="9" placeholder="9 цифр" required>
+                            </div>
+                            <div class="error-text">
+                                Ошибка поля
+                            </div>
+                        </div>
+                        <!-- <div class="warning-text">
+                            Не удалось найти ИНН и КПП по указанным данным. <br>Пожалуйста, <a href="">регистрацию в системе</a>, чтобы продолжить работу. 
+                        </div> -->
+                        <div class="form-toggle" data-toggle-group="entityType">
+                            <div class="form-toggle_item">
+                                <input type="radio" id="radio-mail" name="authorization-method" value="radio-mail"  checked>
+                                <label for="radio-mail">Электронная почта</label>
+                            </div>
+                            <div class="form-toggle_item">
+                                <input type="radio" id="radio-sms" name="authorization-method" value="radio-sms">
+                                <label for="radio-sms">СМС</label>
+                            </div>
+                        </div>
+                        <div class="input-group" data-toggle-target="entityType" data-toggle-value="radio-mail">
+                            <label for="email">Электронная почта</label>
+                            <div class="input-wrapper">
+                                <input type="email" id="email" placeholder="Введите почту" required>
+                            </div>
+                        </div>
+                        <div class="input-group" data-toggle-target="entityType" data-toggle-value="radio-sms">
+                            <label for="tel">Номер телефона</label>
+                            <div class="input-wrapper">
+                                <input type="tel" id="tel" class="phone-mask" placeholder="+7 (___) ___-__-__" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}" required>
+                            </div>
+                        </div>
+                        <div class="input-group captcha-group">
+                            <label for="captcha">Введите код с картинки</label>
+                            <div class="captcha-wrapper">
+                                <input type="text" id="captcha" name="captcha" autocomplete="off" required>
+                                <canvas id="captcha-canvas" width="140" height="40"></canvas>
+                            </div>
+                             <div class="error-text" style="display:none;">Ошибка поля</div>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="btn-primary" disabled>Сбросить пароль</button>
+                            <a href="./login.html">Вернуться к входу</a>
+                        </div>
+                    </form>
+                </div>
+                <my-infoblock></my-infoblock>
+            </div>
+        </main>
+        <div class="footer">
+            <div class="container">
+                <my-footer></my-footer>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/main.js" defer></script>
+</body>
+</html>
