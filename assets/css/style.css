@@ -198,7 +198,7 @@ table {
     min-height: 100svh;
     display: flex;
     flex-direction: column;
-    background: url(../img/right_bg.svg) right / auto 100% no-repeat, linear-gradient(80deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 54%, rgb(240, 245, 249) 54%, rgb(240, 245, 249) 100%);
+    background: url(../img/right_bg.svg) right top no-repeat, linear-gradient(80deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 54%, rgb(240, 245, 249) 54%, rgb(240, 245, 249) 100%);
 }
 .body-fon main{
     position: relative;
@@ -338,6 +338,9 @@ small{
   flex: 1;
   min-width: 0;
   color: var(--color-text-black);
+}
+.input-wrapper input:disabled{
+  color: var(--color-text-secondary);
 }
 .input-wrapper input::placeholder{
   color: var(--color-text-tertiary);
