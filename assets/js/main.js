@@ -277,130 +277,192 @@ document.addEventListener('DOMContentLoaded', () => {
     //----------------------------------
     // Капча
     function initCaptcha(canvasId, inputId, options = {}) {
-    const canvas = document.getElementById(canvasId);
-    const input = document.getElementById(inputId);
-    const ctx = canvas.getContext('2d');
+        const canvas = document.getElementById(canvasId);
+        const input = document.getElementById(inputId);
 
-    // Ищем блок для текста ошибки рядом с полем (как error-text в остальных полях формы)
-    const errorEl = options.errorSelector
-        ? document.querySelector(options.errorSelector)
-        : input.closest('.input-group')?.querySelector('.error-text');
+        // Если на странице нет капчи (нет canvas или input) — просто выходим,
+        // ничего не ломая и не мешая остальному коду ниже
+        if (!canvas || !input) return null;
 
-    let currentCode = '';
+        const ctx = canvas.getContext('2d');
 
-    function generateCode(length = 6) {
-        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-        let result = '';
-        for (let i = 0; i < length; i++) {
-        result += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return result;
-    }
+        // Ищем блок для текста ошибки рядом с полем (как error-text в остальных полях формы)
+        const errorEl = options.errorSelector
+            ? document.querySelector(options.errorSelector)
+            : input.closest('.input-group')?.querySelector('.error-text');
 
-    function draw() {
-        currentCode = generateCode();
-        const w = canvas.width;
-        const h = canvas.height;
+        let currentCode = '';
 
-        ctx.clearRect(0, 0, w, h);
-
-        ctx.fillStyle = '#f4f6f9';
-        ctx.fillRect(0, 0, w, h);
-
-        for (let i = 0; i < 6; i++) {
-        ctx.strokeStyle = `rgba(${rand(0,150)}, ${rand(0,150)}, ${rand(0,150)}, 0.4)`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(rand(0, w), rand(0, h));
-        ctx.bezierCurveTo(rand(0, w), rand(0, h), rand(0, w), rand(0, h), rand(0, w), rand(0, h));
-        ctx.stroke();
+        function generateCode(length = 6) {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
         }
 
-        const charWidth = w / (currentCode.length + 1);
-        for (let i = 0; i < currentCode.length; i++) {
-        const char = currentCode[i];
-        const x = charWidth * (i + 1);
-        const y = h / 2 + rand(-6, 6);
-        const angle = rand(-25, 25) * (Math.PI / 180);
+        function draw() {
+            currentCode = generateCode();
+            const w = canvas.width;
+            const h = canvas.height;
 
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(angle);
-        ctx.font = `${rand(22, 28)}px Arial`;
-        ctx.fillStyle = `rgb(${rand(20,90)}, ${rand(20,90)}, ${rand(20,90)})`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(char, 0, 0);
-        ctx.restore();
+            ctx.clearRect(0, 0, w, h);
+
+            ctx.fillStyle = '#f4f6f9';
+            ctx.fillRect(0, 0, w, h);
+
+            for (let i = 0; i < 6; i++) {
+                ctx.strokeStyle = `rgba(${rand(0,150)}, ${rand(0,150)}, ${rand(0,150)}, 0.4)`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(rand(0, w), rand(0, h));
+                ctx.bezierCurveTo(rand(0, w), rand(0, h), rand(0, w), rand(0, h), rand(0, w), rand(0, h));
+                ctx.stroke();
+            }
+
+            const charWidth = w / (currentCode.length + 1);
+            for (let i = 0; i < currentCode.length; i++) {
+                const char = currentCode[i];
+                const x = charWidth * (i + 1);
+                const y = h / 2 + rand(-6, 6);
+                const angle = rand(-25, 25) * (Math.PI / 180);
+
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(angle);
+                ctx.font = `${rand(22, 28)}px Arial`;
+                ctx.fillStyle = `rgb(${rand(20,90)}, ${rand(20,90)}, ${rand(20,90)})`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(char, 0, 0);
+                ctx.restore();
+            }
+
+            for (let i = 0; i < 40; i++) {
+                ctx.fillStyle = `rgba(${rand(0,150)}, ${rand(0,150)}, ${rand(0,150)}, 0.5)`;
+                ctx.fillRect(rand(0, w), rand(0, h), 1, 1);
+            }
         }
 
-        for (let i = 0; i < 40; i++) {
-        ctx.fillStyle = `rgba(${rand(0,150)}, ${rand(0,150)}, ${rand(0,150)}, 0.5)`;
-        ctx.fillRect(rand(0, w), rand(0, h), 1, 1);
+        function rand(min, max) {
+            return Math.random() * (max - min) + min;
         }
-    }
 
-    function rand(min, max) {
-        return Math.random() * (max - min) + min;
-    }
-
-    function showError(message) {
-        input.classList.add('error');
-        input.closest('.input-group')?.classList.add('error');
-        if (errorEl) {
-        errorEl.textContent = message;
-        errorEl.style.display = 'block';
+        function showError(message) {
+            input.classList.add('error');
+            input.closest('.input-group')?.classList.add('error');
+            if (errorEl) {
+                errorEl.textContent = message;
+                errorEl.style.display = 'block';
+            }
         }
-    }
 
-    function clearError() {
-        input.classList.remove('error');
-        input.closest('.input-group')?.classList.remove('error');
-        if (errorEl) {
-        errorEl.style.display = 'none';
+        function clearError() {
+            input.classList.remove('error');
+            input.closest('.input-group')?.classList.remove('error');
+            if (errorEl) {
+                errorEl.style.display = 'none';
+            }
         }
-    }
 
-    // Обновление капчи по клику на картинку
-    canvas.addEventListener('click', () => {
-        input.value = '';
-        clearError();
+        // Обновление капчи по клику на картинку
+        canvas.addEventListener('click', () => {
+            input.value = '';
+            clearError();
+            draw();
+        });
+
+        // Сброс ошибки, как только начали печатать заново
+        input.addEventListener('input', () => {
+            clearError();
+        });
+
+        // Проверка кода. Возвращает true/false, обновляет капчу и подсвечивает ошибку при неверном вводе.
+        function checkCaptcha() {
+            const isValid = input.value.trim().toUpperCase() === currentCode;
+
+            if (isValid) {
+                clearError();
+            } else {
+                showError('Неверный код с картинки');
+                input.value = '';
+                draw(); // при ошибке всегда генерируем новый код — так безопаснее
+            }
+
+            return isValid;
+        }
+
         draw();
-    });
 
-    // Сброс ошибки, как только начали печатать заново
-    input.addEventListener('input', () => {
-        clearError();
-    });
-
-    // Проверка кода. Возвращает true/false, обновляет капчу и подсвечивает ошибку при неверном вводе.
-    function checkCaptcha() {
-        const isValid = input.value.trim().toUpperCase() === currentCode;
-
-        if (isValid) {
-        clearError();
-        } else {
-        showError('Неверный код с картинки');
-        input.value = '';
-        draw(); // при ошибке всегда генерируем новый код — так безопаснее
-        }
-
-        return isValid;
-    }
-
-    draw();
-
-    return { checkCaptcha, refresh: draw };
+        return { checkCaptcha, refresh: draw };
     }
 
     const captcha = initCaptcha('captcha-canvas', 'captcha', {
-    errorSelector: '.captcha-group .error-text'
+        errorSelector: '.captcha-group .error-text'
     });
 
-    // Пример использования при отправке формы:
-    document.querySelector('form').addEventListener('submit', (e) => {
-    if (!captcha.checkCaptcha()) {
-        e.preventDefault();
+    // Проверяем капчу при отправке формы, только если капча реально есть на странице
+    if (captcha) {
+        const captchaForm = document.querySelector('.captcha-group')?.closest('form');
+        if (captchaForm) {
+            captchaForm.addEventListener('submit', (e) => {
+                if (!captcha.checkCaptcha()) {
+                    e.preventDefault();
+                }
+            });
+        }
     }
-    });
+
+    //----------------------------------
+    // input file
+        const ALLOWED_EXTENSIONS = ['pdf', 'jpg', 'jpeg', 'tiff', 'tif'];
+
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('.file-btn');
+            if (!btn) return;
+
+            const wrapper = btn.closest('.file-wrapper');
+            const input = wrapper.querySelector('.file-input');
+            input.click();
+        });
+
+        document.addEventListener('change', function (e) {
+            if (!e.target.classList.contains('file-input')) return;
+
+            const input = e.target;
+            const wrapper = input.closest('.file-wrapper');
+            const fileBox = wrapper.querySelector('.file-box');
+            const nameSpan = wrapper.querySelector('.file-name');
+            const errorEl = wrapper.closest('.file-group')?.querySelector('.error-text');
+
+            if (!input.files.length) {
+                nameSpan.textContent = '';
+                fileBox.classList.remove('has-file');
+                return;
+            }
+
+            const file = input.files[0];
+            const extension = file.name.split('.').pop().toLowerCase();
+
+            if (!ALLOWED_EXTENSIONS.includes(extension)) {
+                input.value = ''; // сбрасываем некорректный выбор
+                nameSpan.textContent = '';
+                fileBox.classList.remove('has-file'); 
+                wrapper.classList.add('error');
+
+                if (errorEl) {
+                    errorEl.textContent = 'Допустимые форматы: PDF, JPG, JPEG, TIFF';
+                    errorEl.style.display = 'block';
+                } else {
+                    alert('Допустимые форматы: PDF, JPG, JPEG, TIFF');
+                }
+                return;
+            }
+
+            wrapper.classList.remove('error');
+            if (errorEl) errorEl.style.display = 'none';
+            nameSpan.textContent = file.name;
+            fileBox.classList.add('has-file');
+        });
 });

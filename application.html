@@ -14,7 +14,7 @@
     <script src="./components/my-infoblock.js" defer></script>
     <script src="./components/my-footer.js" defer></script>
 
-    <title>Главная</title>
+    <title>Подача заявки</title>
 </head>
 <body>
     <div class="body-fon">
@@ -117,7 +117,7 @@
                             <div class="input-group">
                                 <label for="type-agreement">Тип договора</label>
                                 <div class="select-wrapper">
-                                    <select class="custom-select" id="type-agreement">
+                                    <select id="type-agreement">
                                     <option value="" disabled selected>Выберите из списка</option>
                                     <option value="1">Договор 1</option>
                                     <option value="2">Договор 2</option>
@@ -125,14 +125,120 @@
                                     <option value="4">Договор 4</option>
                                     <option value="4">Договор 5</option>
                                     </select>
-
-                                    <!-- Наша иконка стрелки (SVG) -->
                                     <svg class="custom-arrow" viewBox="0 0 24 24">
                                     <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
                                     </svg>
                                 </div>
                             </div>
-
+                            <fieldset>
+                                <legend>Точки поставки</legend>
+                                <div class="input-group">
+                                    <label for="delivery-point">Наименование точки поставки</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="delivery-point" required>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="address-point">Адрес точки поставки</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="address-point" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label for="maximum-power">Максимальная мощность, кВт</label>
+                                        <div class="input-wrapper">
+                                            <input type="text" id="maximum-power">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="price-category">Ценовая категория</label>
+                                        <div class="input-wrapper">
+                                            <input type="text" id="price-category">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn-secondary" style="width: 200px;">Добавить ещё</button>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Документы (Формат PDF, JPG, JPEG, TIFF)</legend>
+                                <div class="warning-text">
+                                    Ниже указан перечень обязательных документов. Если у вас есть дополнительные документы, относящиеся к подключению, вы можете загрузить их в раздел “Иные документы”. Размер каждого файла должен быть не более 5 МБ, формат — PDF.
+                                </div>
+                                <div class="input-group">
+                                    <label>Акт тех присоединения</label>
+                                    <div class="file-wrapper form-group">
+                                        <div class="file-box">
+                                            <span class="file-name"></span>
+                                        </div>
+                                        <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                        <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden required>
+                                    </div>
+                                    <label class="checkbox-wrapper">
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                        <span class="label-text">
+                                            Единый акт тех присоединения
+                                        </span>
+                                    </label>
+                                    <button type="button" class="btn-secondary">Добавить ещё</button>
+                                </div>
+                                <hr>
+                                <div class="input-group">
+                                    <label>Документы на прибор учета </label>
+                                    <div class="file-wrapper form-group">
+                                        <div class="file-box">
+                                            <span class="file-name"></span>
+                                        </div>
+                                        <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                        <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden>
+                                    </div>
+                                    <label class="checkbox-wrapper">
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                        <span class="label-text">
+                                            Один пакет документов на все приборы учета
+                                        </span>
+                                    </label>
+                                    <button type="button" class="btn-secondary">Добавить ещё</button>
+                                </div>
+                                <hr>
+                                <div class="input-group">
+                                    <label>Правоустанавливающие доки на объект точки поставки</label>
+                                    <div class="file-wrapper form-group">
+                                        <div class="file-box">
+                                            <span class="file-name"></span>
+                                        </div>
+                                        <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                        <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden required>
+                                    </div>
+                                    <label class="checkbox-wrapper">
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                        <span class="label-text">
+                                            Один пакет документов
+                                        </span>
+                                    </label>
+                                    <button type="button" class="btn-secondary">Добавить ещё</button>
+                                </div>
+                            </fieldset>
+                            <hr>
+                            <div class="input-group">
+                                <label for="type-agreement">Выбор способа направления договора</label>
+                                <div class="select-wrapper">
+                                    <select id="type-agreement">
+                                    <option value="" disabled selected>Выберите из списка</option>
+                                    <option value="1">Договор 1</option>
+                                    <option value="2">Договор 2</option>
+                                    <option value="3">Договор 3</option>
+                                    <option value="4">Договор 4</option>
+                                    <option value="4">Договор 5</option>
+                                    </select>
+                                    <svg class="custom-arrow" viewBox="0 0 24 24">
+                                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                                    </svg>
+                                </div>
+                            </div>
                             <div class="checkbox-group">
                                 <label class="checkbox-wrapper">
                                     <input type="checkbox">
@@ -154,143 +260,14 @@
                             </div>
                         </div>
                         <div data-toggle-target="entityType" data-toggle-value="radio-individual">
-                            <div class="input-group">
+                            <!-- комментарий -->
+                             <div class="input-group">
                                 <label for="inn2">ИНН</label>
                                 <div class="input-wrapper">
                                     <input type="text" id="inn2" name="inn" inputmode="numeric" pattern="\d{10}|\d{12}" maxlength="12" placeholder="10 или 12 цифр" required>
                                 </div>
                             </div>
-                            <fieldset>
-                            <legend>Паспортные данные</legend>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <label for="text-surname">Фамилия</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="text-surname" required>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label for="text-name">Имя</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="text-name" required>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label for="texxtpatronymic">Отчество</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="text-patronymic" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <label for="text-seria">Серия</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="text-seria" required>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label for="text-namber">Номер</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="text-namber" required>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label for="texxtcalendardate">Дата выдачи</label>
-                                    <div class="input-wrapper">
-                                        <input type="date" class="custom-date-input" id="text-calendardate" value="2026-07-13" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group input-group-2">
-                                    <label for="text-cembidan">Кем выдан</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="text-cembidan">
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label for="text-codehome">Код подразделения</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="text-codehome" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <label for="text-registration-address">Адрес регистрации</label>
-                                <div class="input-wrapper">
-                                    <input type="text" id="text-registration-address" required>
-                                </div>
-                            </div>
-                            </fieldset>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <label for="mail-person">Эл. почта ответственного лица</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="mail-person" required>
-                                    </div>
-                                </div>
-                                <button class="btn-secondary" style="width: 200px;">Подтвердить почту</button>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <label for="tel-person">Телефон ответственного лица (мобильный)</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="tel-person" required>
-                                    </div>
-                                    <small class="hint">На этот номер придет проверочный код</small>
-                                </div>
-                                <button class="btn-secondary" style="width: 200px;">Подтвердить телефон</button>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <label for="password1">Пароль</label>
-                                    <div class="input-wrapper">
-                                        <input type="password" id="password1" placeholder="" required>
-                                        <button type="button" class="toggle-password">
-                                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                            <path class="eye-open" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"/>
-                                            <circle class="eye-open" cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
-                                            <path class="eye-closed" style="display:none" d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" stroke="currentColor" stroke-width="2"/>
-                                            <line class="eye-closed" style="display:none" x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2"/>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label for="password2">Пароль повторно</label>
-                                    <div class="input-wrapper">
-                                        <input type="password" id="password2" placeholder="" required>
-                                        <button type="button" class="toggle-password">
-                                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                            <path class="eye-open" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"/>
-                                            <circle class="eye-open" cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
-                                            <path class="eye-closed" style="display:none" d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" stroke="currentColor" stroke-width="2"/>
-                                            <line class="eye-closed" style="display:none" x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2"/>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="checkbox-group">
-                                <label class="checkbox-wrapper">
-                                    <input type="checkbox">
-                                    <span class="custom-checkbox"></span>
-                                    <span class="label-text">
-                                        Я даю свое согласие на обработку моих персональных данных. <a href="#">Политика в отношении обработки персональных данных</a>.
-                                    </span>
-                                </label>
-                                <label class="checkbox-wrapper">
-                                    <input type="checkbox">
-                                    <span class="custom-checkbox"></span>
-                                    <span class="label-text">
-                                        Я ознакомлен с <a href="#">пользовательским соглашением</a>.
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="button-group">
-                                <button type="submit" class="btn-primary">Зарегистрироваться</button>
-                            </div>
+                            <!-- комментарий -->
                         </div>
                     </form>
                 </div>

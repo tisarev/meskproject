@@ -377,6 +377,50 @@ small{
   background-repeat: no-repeat;
   background-position: right 10px center;
 }
+.select-wrapper{
+  position: relative;
+}
+.select-wrapper select {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--br);
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: var(--color-white);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.custom-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none; /* Клик проходит в селект */
+  fill: #6c757d;
+  transition: transform 0.2s;
+}
+.select-wrapper select:focus + .custom-arrow {
+  transform: translateY(-50%) rotate(180deg);
+  fill: #1565c0;
+}
+.select-wrapper select::-ms-expand {
+  display: none; /* Убивает стрелку в старых версиях IE/Edge */
+}
+.select-wrapper select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
 .toggle-password {
   background: none;
   border: none;
@@ -572,11 +616,15 @@ button.btn-primary:hover::after {
 .checkbox-wrapper a {
   cursor: pointer;
 }
-.checkbox-group label{
+.checkbox-wrapper{
   margin-bottom: 1rem;
 }
 .label-text{
   text-wrap: balance;
+}
+.input-group label.checkbox-wrapper {
+  display: flex;
+  margin-bottom: 1rem;
 }
 fieldset{
   border: 1px dashed var(--color-border-secondary);
@@ -589,6 +637,47 @@ fieldset :last-child{
 legend{
   color: var(--color-text-secondary);
 }
+hr{
+  border: none;
+  border-top: 1px solid var(--color-border-secondary);
+  margin-bottom: 1rem;
+}
+
+.file-box {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--br);
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: var(--color-white);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.file-name {
+  color: var(--color-text-black);
+}
+.file-box.has-file {
+    background: #eaf7ec;
+    border-color: #34a853;
+}
+
+.file-box.has-file .file-name {
+    color: #1e7e34;
+    font-weight: 500;
+}
+.file-wrapper:has(+ label.checkbox-wrapper) {
+    margin-bottom: 0.5rem;
+}
+
+
+
+
+
+
 /* Инфоблок */
 .infoblock{
   margin-top: calc(120px + 3rem);
