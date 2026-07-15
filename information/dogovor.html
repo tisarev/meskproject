@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+    <link href="../assets/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/style.css?v=1.0" rel="stylesheet" type="text/css">
+
+    <script src="../components/my-menu.js" defer></script>
+    <script src="../components/my-footer.js" defer></script>
+
+    <title>Общие данные</title>
+</head>
+<body>
+    <div id="page">
+        <my-menu></my-menu>
+        <div id="page-content">
+            <main>
+                <h1>Общие данные</h1>
+                <div class="content">
+                    <div class="content-block">
+                        <div class="content-block__header">
+                            <h2>ООО «Название компании»</h2>
+                            <div class="content-block__tabs">
+                                <a href="" class="content-block__tab active">Договор 1</a>
+                                <a href="" class="content-block__tab">Договор 2</a>
+                                <a href="" class="content-block__tab">Договор 1010</a>
+                            </div>
+                        </div>
+                        <div class="content-block__wrapper">
+                            <div class="form-group">
+                                <div class="input-group input-group-2">
+                                    <label for="number-dog">Номер договора</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="number-dog" required>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="data-dog">Дата договора</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="data-dog" required>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="status-dog">Статус</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="status-dog" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-block red-notification">
+                                <h3>Уважаемый потребитель!</h3>
+                                <p>ПАО «Мордовская энергосбытовая компания» уведомляет Вас о наличии общей дебиторской задолженности ООО “Название Компании” на 28.12.2026 которая составляет 20 500,75 руб.</p>
+                                <p>Для предотвращения введения процедуры ограничения поставки электрической энергии предлагаем в кратчайшие сроки оплатить задолженность</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notification-block red-notification">
+                        <h3>Обращаем Ваше внимание!</h3>
+                        <p>Важно сообщение (Уведомление об ограничении или претензия)</p>
+                    </div>
+                    <br>
+                    <div class="notification-block green-notification">
+                        <h3>Последнее информационное сообщение</h3>
+                        <p>Уважаемый потребитель уведомляем Вас... о замене прибора учета/замене тарифа</p>
+                    </div>
+                </div>
+            </main>
+            
+            <my-footer></my-footer>
+        </div>
+    </div>
+</body>
+</html>
