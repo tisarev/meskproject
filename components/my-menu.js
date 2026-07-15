@@ -10,31 +10,21 @@ class MyMenu extends HTMLElement {
     }
 
     highlightActiveLink() {
-        // Получаем текущий URL
         const currentPath = window.location.pathname;
-        
-        // Находим все ссылки в меню
         const links = this.querySelectorAll('.menu-link');
-        
+
         links.forEach(link => {
-            // Получаем путь из href
-            const linkPath = link.getAttribute('href');
-            
-            // Убираем класс active у всех
             link.classList.remove('active');
-            
-            // Проверяем совпадение
-            if (currentPath === linkPath) {
-                link.classList.add('active');
-            }
-            
-            // Особый случай для главной страницы
-            if (currentPath === '/' && linkPath === '/') {
-                link.classList.add('active');
-            }
-            
-            // Если текущий путь заканчивается на linkPath (для about.html и т.д.)
-            if (currentPath !== '/' && linkPath !== '/' && currentPath.endsWith(linkPath)) {
+
+            const section = link.dataset.section;
+            if (!section) return;
+
+            // Совпадение либо с самой страницей раздела (information.html),
+            // либо с любой вложенной страницей внутри папки раздела (/information/...)
+            const isExactPage = currentPath.endsWith(`/${section}.html`);
+            const isInsideSection = currentPath.includes(`/${section}/`);
+
+            if (isExactPage || isInsideSection) {
                 link.classList.add('active');
             }
         });
