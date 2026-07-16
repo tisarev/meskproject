@@ -471,6 +471,7 @@ small{
 button{
   flex-shrink: 0;
   white-space: nowrap;
+  padding: 0;
 }
 button.btn-primary {
   padding: 0 1rem;
@@ -714,17 +715,18 @@ hr{
   padding-left: 5%;
   padding-right: 1rem;
   width: 100%;
-  max-width: 1140px;
+  max-width: 1280px;
 }
 #page-content main{
     position: relative;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+    padding-top: 1rem;
 }
 #page-content main h1{
   font-size: 1.5rem;
-  padding: 2.5rem 0 1.5rem;
+  padding: 1.5rem 0;
   margin-bottom: 0;
 }
 .content-block{
@@ -733,6 +735,7 @@ hr{
   border-radius: var(--br);
   border: 2px solid var(--color-border-secondary);
   margin-bottom: 1rem;
+  overflow-x: auto;
 }
 .content-block__header{
   background-color: var(--color-bg-alt);
@@ -903,4 +906,86 @@ nav.main-menu a.active{
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+}
+/* Таблица */
+table.table-ui{
+  width: 100%;
+	border-collapse: collapse; 
+}
+.table-ui thead th{
+  background-color: var(--color-bg-alt);
+  font-weight: 400;
+  font-size: 0.8rem;
+  text-align: left;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border-secondary);
+}
+.table-ui tbody tr:hover{
+  background-color: var(--color-warning);
+}
+.table-ui tbody td{
+  text-align: left;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border-secondary);
+  color: var(--color-text-black);
+}
+.month-toggle__icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23677497' stroke-width='1.5'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform .2s ease;
+  margin-left: 6px;
+}
+.month-toggle[aria-expanded="true"] .month-toggle__icon {
+  transform: rotate(180deg);
+}
+.month-toggle{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+tr.days-row td:first-child{
+  padding-left: 24px;
+}
+.table tr td:first-child, .table tr th:first-child {
+	border-left: none;
+}
+.table tr td:last-child, .table tr th:last-child {
+	border-right: none;
+}
+.month-toggle{
+  padding: 0;
+  font-weight: 600;
+}
+tr.tr-mark{
+  background-color: var(--color-warning);
+}
+.table-ui .checkbox-wrapper{
+  margin-bottom: 0;
+}
+/* Таблица */
+.content-padding{
+  padding: 1rem;
+}
+.content-padding h3{
+  margin-bottom: 1rem;
+}
+.td-right tr td:last-child{
+  text-align: right;
+}
+.ui-right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  margin-top: 1rem;
+}
+.ui-right b{
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.3rem;
 }

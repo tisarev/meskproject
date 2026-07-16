@@ -465,4 +465,29 @@ document.addEventListener('DOMContentLoaded', () => {
             nameSpan.textContent = file.name;
             fileBox.classList.add('has-file');
         });
+
+        //----------------------------------
+        // table
+        function initMonthToggle() {
+            const toggles = document.querySelectorAll('.month-toggle');
+
+            toggles.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const key = btn.dataset.monthToggle;
+                    const rows = document.querySelectorAll(`.days-row[data-month-target="${key}"]`);
+                    if (!rows.length) return;
+
+                    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+                    rows.forEach((row) => {
+                        row.hidden = isOpen;
+                    });
+
+                    btn.setAttribute('aria-expanded', String(!isOpen));
+                });
+            });
+        }
+
+        initMonthToggle();
+        
 });
