@@ -489,5 +489,155 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         initMonthToggle();
-        
+        //----------------------------------
+        // dialog
+        document.addEventListener('click', (e) => {
+        // открытие: клик по кнопке с data-modal-open
+        const opener = e.target.closest('[data-modal-open]');
+        if (opener) {
+            const name = opener.dataset.modalOpen;
+            const dialog = document.querySelector(`dialog[data-modal="${name}"]`);
+            dialog?.showModal();
+            return;
+        }
+        // закрытие по кнопке с data-modal-close
+        const closer = e.target.closest('[data-modal-close]');
+        if (closer) {
+            closer.closest('dialog')?.close();
+            return;
+        }
+        // закрытие по клику на тёмную область (::backdrop)
+        if (e.target.tagName === 'DIALOG' && e.target.hasAttribute('data-modal')) {
+            e.target.close();
+        }
+        });
+
+        //----------------------------------
+        // Добавить еще
+        document.addEventListener('click', (e) => {
+
+        // --- добавление новой группы полей ---
+        const addBtn = e.target.closest('[data-add-group]');
+        if (addBtn) {
+            const fieldset = addBtn.closest('fieldset');
+            const groups = fieldset.querySelectorAll('[data-point-group]');
+            const template = groups[0];               // всегда клонируем первую группу как эталон
+            const clone = template.cloneNode(true);
+            const index = groups.length + 1;          // новый порядковый номер для id/for
+
+            // обновляем id инпутов
+            clone.querySelectorAll('[id]').forEach(el => {
+            el.id = el.id.replace(/-\d+$/, `-${index}`);
+            });
+            // обновляем for у лейблов
+            clone.querySelectorAll('label[for]').forEach(el => {
+            el.setAttribute('for', el.getAttribute('for').replace(/-\d+$/, `-${index}`));
+            });
+            // очищаем значения, скопированные вместе с разметкой
+            clone.querySelectorAll('input').forEach(input => input.value = '');
+
+            // показываем крестик удаления у новой группы
+            const removeBtn = clone.querySelector('[data-remove-group]');
+            if (removeBtn) removeBtn.hidden = false;
+
+            addBtn.before(clone);
+            return;
+        }
+
+        // --- удаление группы полей ---
+        const removeBtn = e.target.closest('[data-remove-group]');
+        if (removeBtn) {
+            const group = removeBtn.closest('[data-point-group]');
+            const fieldset = group.closest('fieldset');
+            const firstGroup = fieldset.querySelector('[data-point-group]');
+
+            // первую группу удалить нельзя ни при каких условиях
+            if (group !== firstGroup) {
+            group.remove();
+            }
+        }
+        });
+        //----------------------------------
+        // Перетаскивать файлы
+        function initFileDropzone(root) {
+            const dropzone   = root.querySelector('[data-dropzone]') || root;
+            const input      = dropzone.querySelector('[data-dropzone-input]');
+            const btn        = dropzone.querySelector('[data-dropzone-btn]');
+            const listEl     = root.querySelector('[data-dropzone-file-list]');
+            if (!dropzone || !input) return;
+
+            let files = []; // собственное хранилище File-объектов
+
+            function render() {
+                if (!listEl) return;
+                listEl.innerHTML = '';
+                files.forEach((file, i) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <span>${file.name}</span>
+                        <button type="button" class="dropzone-file-remove" data-index="${i}" aria-label="Удалить файл">&times;</button>
+                    `;
+                    listEl.appendChild(li);
+                });
+            }
+
+            function syncInput() {
+                const dt = new DataTransfer();
+                files.forEach(file => dt.items.add(file));
+                input.files = dt.files;
+            }
+
+            function addFiles(fileList) {
+                const accept = (input.getAttribute('accept') || '')
+                    .split(',')
+                    .map(s => s.trim().toLowerCase())
+                    .filter(Boolean);
+
+                Array.from(fileList).forEach(file => {
+                    const ext = '.' + file.name.split('.').pop().toLowerCase();
+                    if (accept.length && !accept.includes(ext)) return; // отсекаем неподходящий формат
+                    const isDuplicate = files.some(f => f.name === file.name && f.size === file.size);
+                    if (!isDuplicate) files.push(file);
+                });
+
+                syncInput();
+                render();
+            }
+
+            // клик по кнопке или по самой зоне открывает системный диалог
+            (btn || dropzone).addEventListener('click', () => input.click());
+
+            input.addEventListener('change', () => addFiles(input.files));
+
+            ['dragenter', 'dragover'].forEach(evt => {
+                dropzone.addEventListener(evt, (e) => {
+                    e.preventDefault();
+                    dropzone.classList.add('is-dragover');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(evt => {
+                dropzone.addEventListener(evt, (e) => {
+                    e.preventDefault();
+                    dropzone.classList.remove('is-dragover');
+                });
+            });
+
+            dropzone.addEventListener('drop', (e) => {
+                if (e.dataTransfer?.files?.length) addFiles(e.dataTransfer.files);
+            });
+
+            // удаление файла из списка по крестику
+            if (listEl) {
+                listEl.addEventListener('click', (e) => {
+                    const removeBtn = e.target.closest('[data-index]');
+                    if (!removeBtn) return;
+                    const index = Number(removeBtn.dataset.index);
+                    files.splice(index, 1);
+                    syncInput();
+                    render();
+                });
+            }
+        }
+        document.querySelectorAll('[data-dropzone]').forEach(el => initFileDropzone(el.parentElement || el));
 });

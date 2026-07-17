@@ -132,66 +132,77 @@
                             </div>
                             <fieldset>
                                 <legend>Точки поставки</legend>
-                                <div class="input-group">
-                                    <label for="delivery-point">Наименование точки поставки</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="delivery-point" required>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label for="address-point">Адрес точки поставки</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="address-point" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
+                                <div class="point-group" data-point-group>
                                     <div class="input-group">
-                                        <label for="maximum-power">Максимальная мощность, кВт</label>
+                                        <label for="delivery-point-1">Наименование точки поставки</label>
                                         <div class="input-wrapper">
-                                            <input type="text" id="maximum-power">
+                                            <input type="text" id="delivery-point-1" required>
                                         </div>
                                     </div>
                                     <div class="input-group">
-                                        <label for="price-category">Ценовая категория</label>
+                                        <label for="address-point-1">Адрес точки поставки</label>
                                         <div class="input-wrapper">
-                                            <input type="text" id="price-category">
+                                            <input type="text" id="address-point-1" required>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label for="maximum-power-1">Максимальная мощность, кВт</label>
+                                            <div class="input-wrapper">
+                                                <input type="text" id="maximum-power-1">
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="price-category-1">Ценовая категория</label>
+                                            <div class="input-wrapper">
+                                                <input type="text" id="price-category-1">
+                                            </div>
+                                        </div>
+                                        <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
+                                    </div>
                                 </div>
-                                <button class="btn-secondary" style="width: 200px;">Добавить ещё</button>
+                                <button type="button" class="btn-secondary" data-add-group style="width: 200px;">Добавить ещё</button>
                             </fieldset>
                             <fieldset>
                                 <legend>Документы (Формат PDF, JPG, JPEG, TIFF)</legend>
                                 <div class="warning-text">
                                     Ниже указан перечень обязательных документов. Если у вас есть дополнительные документы, относящиеся к подключению, вы можете загрузить их в раздел “Иные документы”. Размер каждого файла должен быть не более 5 МБ, формат — PDF.
                                 </div>
-                                <div class="input-group">
-                                    <label>Акт тех присоединения</label>
-                                    <div class="file-wrapper form-group">
-                                        <div class="file-box">
-                                            <span class="file-name"></span>
+                                
+                                    <div class="input-group">
+                                        <label>Акт тех присоединения</label>
+                                        <div class="point-group" data-point-group>
+                                            <div class="file-wrapper form-group">
+                                                <div class="file-box">
+                                                    <span class="file-name"></span>
+                                                </div>
+                                                <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                                <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden required>
+                                                <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
+                                            </div>
                                         </div>
-                                        <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
-                                        <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden required>
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                            <span class="label-text">
+                                                Единый акт тех присоединения
+                                            </span>
+                                        </label>
+                                        <button type="button" class="btn-secondary" data-add-group>Добавить ещё</button>
                                     </div>
-                                    <label class="checkbox-wrapper">
-                                        <input type="checkbox">
-                                        <span class="custom-checkbox"></span>
-                                        <span class="label-text">
-                                            Единый акт тех присоединения
-                                        </span>
-                                    </label>
-                                    <button type="button" class="btn-secondary">Добавить ещё</button>
-                                </div>
+                                
                                 <hr>
                                 <div class="input-group">
                                     <label>Документы на прибор учета </label>
-                                    <div class="file-wrapper form-group">
-                                        <div class="file-box">
-                                            <span class="file-name"></span>
+                                    <div class="point-group" data-point-group>
+                                        <div class="file-wrapper form-group">
+                                            <div class="file-box">
+                                                <span class="file-name"></span>
+                                            </div>
+                                            <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                            <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden>
+                                            <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
                                         </div>
-                                        <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
-                                        <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden>
                                     </div>
                                     <label class="checkbox-wrapper">
                                         <input type="checkbox">
@@ -200,17 +211,20 @@
                                             Один пакет документов на все приборы учета
                                         </span>
                                     </label>
-                                    <button type="button" class="btn-secondary">Добавить ещё</button>
+                                    <button type="button" class="btn-secondary" data-add-group>Добавить ещё</button>
                                 </div>
                                 <hr>
                                 <div class="input-group">
                                     <label>Правоустанавливающие доки на объект точки поставки</label>
-                                    <div class="file-wrapper form-group">
-                                        <div class="file-box">
-                                            <span class="file-name"></span>
+                                    <div class="point-group" data-point-group>
+                                        <div class="file-wrapper form-group">
+                                            <div class="file-box">
+                                                <span class="file-name"></span>
+                                            </div>
+                                            <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                            <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden required>
+                                            <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
                                         </div>
-                                        <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
-                                        <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden required>
                                     </div>
                                     <label class="checkbox-wrapper">
                                         <input type="checkbox">
@@ -219,9 +233,22 @@
                                             Один пакет документов
                                         </span>
                                     </label>
-                                    <button type="button" class="btn-secondary">Добавить ещё</button>
+                                    <button type="button" class="btn-secondary" data-add-group>Добавить ещё</button>
+                                </div>
+                                <div class="input-group">
+                                    <div class="dropzone-block" data-dropzone-block>
+                                        <label>Иные документы</label>
+                                        <div class="dropzone" data-dropzone>
+                                            <p class="dropzone-text">Перетащите документы или изображения сюда, чтобы начать загрузку</p>
+                                            <p class="dropzone-or">или</p>
+                                            <button type="button" class="btn-secondary dropzone-btn" data-dropzone-btn>Нажмите, чтобы выбрать файлы</button>
+                                            <input type="file" class="dropzone-input" data-dropzone-input multiple accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden>
+                                        </div>
+                                        <ul class="dropzone-file-list" data-dropzone-file-list></ul>
+                                    </div>
                                 </div>
                             </fieldset>
+                            
                             <hr>
                             <div class="input-group">
                                 <label for="type-agreement">Выбор способа направления договора</label>
@@ -267,6 +294,205 @@
                                     <input type="text" id="inn2" name="inn" inputmode="numeric" pattern="\d{10}|\d{12}" maxlength="12" placeholder="10 или 12 цифр" required>
                                 </div>
                             </div>
+                            <div class="input-group">
+                                <label for="post-title-2">Название</label>
+                                <div class="input-wrapper disabled">
+                                    <input type="text" id="post-title-2" value="ООО “Спорткомлекс Ленинский”" disabled required>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="post-legal-address-2">Юридический адрес</label>
+                                <div class="input-wrapper disabled">
+                                    <input type="text" id="post-legal-address-2" value="РМ, пос. Атяшево, Ленина 133" disabled required>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="post-fact-address-2">Фактический адрес</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="post-fact-address-2" value=" 430016, Республика Мордовия, город Саранск, Большевистская ул, д. 117а ">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="post-ogrn-2">ОГРН</label>
+                                <div class="input-wrapper disabled">
+                                    <input type="text" id="post-ogrn-2" value="1081326002988" disabled required>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="post-director-2">Руководитель</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="post-director-2" value="Лялькин Виталий Александрович" required>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="post-based-what-2">На основании чего директор</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="post-based-what-2" value="" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="bank-bik-2">БИК Банка</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="bank-bik-2">
+                                    </div>
+                                </div>
+                                <div class="input-group input-group-2">
+                                    <label for="bank-name-2">Название банка</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="bank-name-2">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="payment-account-2">Расчетный счёт в банке</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="payment-account-2" required>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="corp-account-2">Корреспондентский счёт банка</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="corp-account-2" required>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="type-agreement-2">Тип договора</label>
+                                <div class="select-wrapper">
+                                    <select id="type-agreement-2">
+                                    <option value="" disabled selected>Выберите из списка</option>
+                                    <option value="1">Договор 1</option>
+                                    <option value="2">Договор 2</option>
+                                    <option value="3">Договор 3</option>
+                                    <option value="4">Договор 4</option>
+                                    <option value="4">Договор 5</option>
+                                    </select>
+                                    <svg class="custom-arrow" viewBox="0 0 24 24">
+                                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <fieldset>
+                                <legend>Точки поставки</legend>
+
+                                <div class="point-group" data-point-group>
+
+                                    <div class="input-group">
+                                        <label for="delivery-point-1">Наименование точки поставки</label>
+                                        <div class="input-wrapper">
+                                            <input type="text" id="delivery-point-1" required>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="address-point-1">Адрес точки поставки</label>
+                                        <div class="input-wrapper">
+                                            <input type="text" id="address-point-1" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label for="maximum-power-1">Максимальная мощность, кВт</label>
+                                            <div class="input-wrapper">
+                                                <input type="text" id="maximum-power-1">
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="price-category-1">Ценовая категория</label>
+                                            <div class="input-wrapper">
+                                                <input type="text" id="price-category-1">
+                                            </div>
+                                        </div>
+                                        <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn-secondary" data-add-group style="width: 200px;">Добавить ещё</button>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Документы (Формат PDF, JPG, JPEG, TIFF)</legend>
+                                <div class="warning-text">
+                                    Ниже указан перечень обязательных документов. Если у вас есть дополнительные документы, относящиеся к подключению, вы можете загрузить их в раздел “Иные документы”. Размер каждого файла должен быть не более 5 МБ, формат — PDF.
+                                </div>
+                                
+                                    <div class="input-group">
+                                        <label>Акт тех присоединения</label>
+                                        <div class="point-group" data-point-group>
+                                            <div class="file-wrapper form-group">
+                                                <div class="file-box">
+                                                    <span class="file-name"></span>
+                                                </div>
+                                                <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                                <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden required>
+                                                <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
+                                            </div>
+                                        </div>
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                            <span class="label-text">
+                                                Единый акт тех присоединения
+                                            </span>
+                                        </label>
+                                        <button type="button" class="btn-secondary" data-add-group>Добавить ещё</button>
+                                    </div>
+                                
+                                <hr>
+                                <div class="input-group">
+                                    <label>Документы на прибор учета </label>
+                                    <div class="point-group" data-point-group>
+                                        <div class="file-wrapper form-group">
+                                            <div class="file-box">
+                                                <span class="file-name"></span>
+                                            </div>
+                                            <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                            <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden>
+                                            <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
+                                        </div>
+                                    </div>
+                                    <label class="checkbox-wrapper">
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                        <span class="label-text">
+                                            Один пакет документов на все приборы учета
+                                        </span>
+                                    </label>
+                                    <button type="button" class="btn-secondary" data-add-group>Добавить ещё</button>
+                                </div>
+                                <hr>
+                                <div class="input-group">
+                                    <label>Правоустанавливающие доки на объект точки поставки</label>
+                                    <div class="point-group" data-point-group>
+                                        <div class="file-wrapper form-group">
+                                            <div class="file-box">
+                                                <span class="file-name"></span>
+                                            </div>
+                                            <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                            <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden required>
+                                            <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
+                                        </div>
+                                    </div>
+                                    <label class="checkbox-wrapper">
+                                        <input type="checkbox">
+                                        <span class="custom-checkbox"></span>
+                                        <span class="label-text">
+                                            Один пакет документов
+                                        </span>
+                                    </label>
+                                    <button type="button" class="btn-secondary" data-add-group>Добавить ещё</button>
+                                </div>
+                                <div class="input-group">
+                                    <div class="dropzone-block" data-dropzone-block>
+                                        <label>Иные документы</label>
+                                        <div class="dropzone" data-dropzone>
+                                            <p class="dropzone-text">Перетащите документы или изображения сюда, чтобы начать загрузку</p>
+                                            <p class="dropzone-or">или</p>
+                                            <button type="button" class="btn-secondary dropzone-btn" data-dropzone-btn>Нажмите, чтобы выбрать файлы</button>
+                                            <input type="file" class="dropzone-input" data-dropzone-input multiple accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden>
+                                        </div>
+                                        <ul class="dropzone-file-list" data-dropzone-file-list></ul>
+                                    </div>
+                                </div>
+                            </fieldset>
                             <!-- комментарий -->
                         </div>
                     </form>

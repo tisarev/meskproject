@@ -59,7 +59,7 @@
                                     <td>123456789</td>
                                     <td>1 123,1234</td>
                                     <td>1 123,1212 ИСУ</td>
-                                    <td><a href="">Смотреть</a></td>
+                                    <td><button data-modal-open="settings">Смотреть</button></td>
                                     <td><a href="./points-delivery/index.html">Открыть</a></td>
                                     <td><a href="">Перейти в раздел</a></td>
                                 </tr>
@@ -67,7 +67,7 @@
                                     <td>123456789</td>
                                     <td>1 123,1234</td>
                                     <td>1 123,1212 ИСУ</td>
-                                    <td><a href="">Смотреть</a></td>
+                                    <td><button data-modal-open="settings">Смотреть</button></td>
                                     <td><a href="./points-delivery/index.html">Открыть</a></td>
                                     <td><a href="">Перейти в раздел</a></td>
                                 </tr>
@@ -75,7 +75,7 @@
                                     <td>123456789</td>
                                     <td>1 123,1234</td>
                                     <td>1 123,1212 ИСУ</td>
-                                    <td><a href="">Смотреть</a></td>
+                                    <td><button data-modal-open="settings">Смотреть</button></td>
                                     <td><a href="./points-delivery/index.html">Открыть</a></td>
                                     <td><a href="">Перейти в раздел</a></td>
                                 </tr>
@@ -83,7 +83,7 @@
                                     <td>123456789</td>
                                     <td>1 123,1234</td>
                                     <td>1 123,1212 ИСУ</td>
-                                    <td><a href="">Смотреть</a></td>
+                                    <td><button data-modal-open="settings">Смотреть</button></td>
                                     <td><a href="./points-delivery/index.html">Открыть</a></td>
                                     <td><a href="">Перейти в раздел</a></td>
                                 </tr>
@@ -93,19 +93,75 @@
                                     <td>123456789</td>
                                     <td>1 123,1234</td>
                                     <td>1 123,1212 ИСУ</td>
-                                    <td><a href="">Смотреть</a></td>
+                                    <td><button data-modal-open="settings">Смотреть</button></td>
                                     <td><a href="./points-delivery/index.html">Открыть</a></td>
                                     <td><a href="">Перейти в раздел</a></td>
                                 </tr>
                             </tbody>
                         </table>
-                        
+                    </div>
+                    <div class="warning-text warning-b">
+                        Приборы с меткой «ИСУ» передают показания автоматически. Если у вас нет прибора ИСУ, необходимо внести показания вручную в конце установленного договором расчётного периода. В противном случае расчёт будет произведён системой по среднему тарифу.
                     </div>
                 </div>
             </main>
             
             <my-footer></my-footer>
+
         </div>
+        <dialog data-modal="settings" class="classicModal">
+            <div class="modal-body">
+                <div class="modal-body__header">
+                    <h2>Настройки проекта</h2>
+                    <button data-modal-close class="close-icon">&times;</button>
+                </div>
+                <div class="input-group">
+                    <label for="type-agreement">Выбор способа направления договора</label>
+                    <div class="select-wrapper">
+                        <select id="type-agreement">
+                        <option value="" disabled selected>Выберите из списка</option>
+                        <option value="1">Договор 1</option>
+                        <option value="2">Договор 2</option>
+                        <option value="3">Договор 3</option>
+                        <option value="4">Договор 4</option>
+                        <option value="4">Договор 5</option>
+                        </select>
+                        <svg class="custom-arrow" viewBox="0 0 24 24">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                        </svg>
+                    </div>
+                </div>
+                <table class="table-ui">
+                    <thead>
+                        <tr>
+                        <th>Дата передачи</th>
+                        <th>Начальные показания</th>
+                        <th>Конечные показания</th>
+                        <th>Расход</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>25.01.2026</td>
+                            <td class="green-fon">82,67</td>
+                            <td class="green-fon">82,89</td>
+                            <td>0,22</td>
+                        </tr>
+                        <tr>
+                            <td>25.01.2026</td>
+                            <td class="green-fon">82,67</td>
+                            <td class="green-fon">82,89</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="modal-actions">
+                    <div class="ui-right">
+                        <button class="btn-secondary" data-modal-close>Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </dialog>
     </div>
     <script src="./assets/js/main.js" defer></script>
 </body>
