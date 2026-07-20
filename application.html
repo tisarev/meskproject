@@ -282,8 +282,11 @@
                                     </span>
                                 </label>
                             </div>
-                            <div class="button-group">
-                                <button type="submit" class="btn-primary">Зарегистрироваться</button>
+                            <div class="button-group button-group-grid">
+                                <button type="button" class="btn" data-modal-open="look">Предварительный просмотр</button>
+                                <button type="button" class="btn btn-draft">Сохранить Черновик</button>
+                                <button type="submit" class="btn btn-primary">Подать заявление</button>
+                                <button type="button" class="btn btn-skip">Пропустить</button>
                             </div>
                         </div>
                         <div data-toggle-target="entityType" data-toggle-value="radio-individual">
@@ -493,9 +496,50 @@
                                     </div>
                                 </div>
                             </fieldset>
+                            <hr>
+                            <div class="input-group">
+                                <label for="type-agreement">Выбор способа направления договора</label>
+                                <div class="select-wrapper">
+                                    <select id="type-agreement">
+                                    <option value="" disabled selected>Выберите из списка</option>
+                                    <option value="1">Договор 1</option>
+                                    <option value="2">Договор 2</option>
+                                    <option value="3">Договор 3</option>
+                                    <option value="4">Договор 4</option>
+                                    <option value="4">Договор 5</option>
+                                    </select>
+                                    <svg class="custom-arrow" viewBox="0 0 24 24">
+                                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="checkbox-group">
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox">
+                                    <span class="custom-checkbox"></span>
+                                    <span class="label-text">
+                                        Я даю свое согласие на обработку моих персональных данных. <a href="#">Политика в отношении обработки персональных данных</a>.
+                                    </span>
+                                </label>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox">
+                                    <span class="custom-checkbox"></span>
+                                    <span class="label-text">
+                                        Я ознакомлен с <a href="#">пользовательским соглашением</a>.
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="button-group button-group-grid">
+                                <button type="button" class="btn" data-modal-open="look">Предварительный просмотр</button>
+                                <button type="button" class="btn btn-draft">Сохранить Черновик</button>
+                                <button type="submit" class="btn btn-primary">Подать заявление</button>
+                                <button type="button" class="btn btn-skip">Пропустить</button>
+                            </div>
                             <!-- комментарий -->
                         </div>
                     </form>
+                    <br>
+                    <p>С перечнем обязательных документов для заключения договора можете ознакомиться в разделе <a href="">«Часто задаваемые вопросы»</a></p>
                 </div>
                 <my-infoblock></my-infoblock>
             </div>
@@ -505,6 +549,158 @@
                 <my-footer></my-footer>
             </div>
         </div>
+        <dialog data-modal="look" class="classicModal">
+            <div class="modal-body">
+                <div class="modal-body__header">
+                    <h2>Предпросмотр обращения</h2>
+                    <button data-modal-close class="close-icon">&times;</button>
+                </div>
+                <h3>Заявление о заключении договора</h3>
+                <h4>1. Сведения о заявителе:</h4>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Наименование потребителя</div>
+                    <div class="preview-block__text">Наименование</div>
+                </div>
+                <div class="preview-wrapper">
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">ИНН</div>
+                        <div class="preview-block__text">1234567890</div>
+                    </div>
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">КПП</div>
+                        <div class="preview-block__text">123456789</div>
+                    </div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Юридический адрес</div>
+                    <div class="preview-block__text">Адрес</div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Фактический адрес</div>
+                    <div class="preview-block__text">-</div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">ОГРН</div>
+                    <div class="preview-block__text">-</div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Руководитель</div>
+                    <div class="preview-block__text">-</div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Действует на основании</div>
+                    <div class="preview-block__text">-</div>
+                </div>
+                <div class="preview-wrapper">
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">Номер телефона</div>
+                        <div class="preview-block__text">+7 (927) 123-45-67</div>
+                    </div>
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">Электронная почта</div>
+                        <div class="preview-block__text">info@mail.ru</div>
+                    </div>
+                </div>
+                <h4>2. Банковские реквизиты</h4>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Расчетный счет</div>
+                    <div class="preview-block__text">1234567891234</div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Наименование банка</div>
+                    <div class="preview-block__text">Наименование</div>
+                </div>
+                <div class="preview-wrapper">
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">БИК</div>
+                        <div class="preview-block__text">-</div>
+                    </div>
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">Корреспондентский счет</div>
+                        <div class="preview-block__text">-</div>
+                    </div>
+                </div>
+                <h4>3. Тип договора</h4>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Тип</div>
+                    <div class="preview-block__text">-</div>
+                </div>
+                <h4>4. Сведения о точке(ах) поставки</h4>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">4.1. Наименование</div>
+                    <div class="preview-block__text">-</div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Адрес</div>
+                    <div class="preview-block__text">-</div>
+                </div>
+                <div class="preview-wrapper">
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">Максимальная мощность, кВт</div>
+                        <div class="preview-block__text">-</div>
+                    </div>
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">Ценовая категория</div>
+                        <div class="preview-block__text">-</div>
+                    </div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">4.2. Наименование</div>
+                    <div class="preview-block__text">-</div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Адрес</div>
+                    <div class="preview-block__text">-</div>
+                </div>
+                <div class="preview-wrapper">
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">Максимальная мощность, кВт</div>
+                        <div class="preview-block__text">-</div>
+                    </div>
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">Ценовая категория</div>
+                        <div class="preview-block__text">-</div>
+                    </div>
+                </div>
+                <h4>5. Иные сведения</h4>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Способ направления договора</div>
+                    <div class="preview-block__text">-</div>
+                </div>
+                <div class="preview-wrapper">
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">Адрес электронной почты (для направления уведомлений о введении ограничения режима потребления электрической энергии)</div>
+                        <div class="preview-block__text">-</div>
+                    </div>
+                    <div class="preview-block">
+                        <div class="preview-block__prevtext">Номер мобильного телефона (направления уведомлений о введении ограничения режима потребления электрической энергии)</div>
+                        <div class="preview-block__text">-</div>
+                    </div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-block__prevtext">Ответственное лицо по заключению договора</div>
+                    <div class="preview-block__text">-</div>
+                </div>
+                <h4>6. Перечень прилагаемых документов</h4>
+                <p>1. Акт(ы) об осуществлении технологического присоединения<br>
+                2. Акт(ы) допуска прибора учета<br>
+                3. Правоустанавливающие документы на точку(и) поставки<br>
+                4. Иные документы
+                 </p>
+                <p>Руководитель</p>
+                 
+                <p>Иванов И.И.</p>
+                <hr>
+                <div class="modal-actions">
+                    <div class="ui-right">
+                        <div class="input-group">
+                            <button class="btn-secondary" data-modal-close>Отменить</button>
+                            <button class="btn-primary" >Отправить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dialog>
     </div>
     <script src="./assets/js/main.js" defer></script>
 </body>

@@ -473,6 +473,26 @@ button{
   white-space: nowrap;
   padding: 0;
 }
+.btn {
+  padding: 0 1rem;
+  height: 40px;
+  font-weight: 600;
+  border-radius: var(--br);
+  background-color: var(--color-text-tertiary);
+  color: var(--color-white);
+  text-transform: uppercase;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn:hover{
+  opacity: 0.8;
+}
 button.btn-primary {
   padding: 0 1rem;
   height: 40px;
@@ -553,6 +573,11 @@ button.btn-primary:hover::after {
   flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
+}
+.button-group-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
 }
 .form-group{
   display: flex;
@@ -813,6 +838,7 @@ nav.main-menu a{
 }
 nav.main-menu a:hover{
   background-color: var(--color-primary);
+  text-decoration: none;
 }
 nav.main-menu a.active{
   background-color: var(--color-bg-alt);
@@ -1128,4 +1154,62 @@ dialog.classicModal h2{
     font-size: 16px;
     line-height: 1;
     padding: 0 4px;
+}
+.btn-draft{
+  background-color: var(--color-text-primary);
+}
+.btn-skip{
+  background-color: var(--color-warning);
+  border: 1px solid var(--color-warning-text);
+  color: var(--color-warning-text);
+}
+.preview-block{
+  width: 100%;
+  border-bottom: 1px solid var(--color-border-secondary);
+  padding-bottom: 5px;
+  margin-bottom: 0.6rem;
+}
+.preview-block__prevtext{
+  color: var(--color-text-secondary);
+}
+h4{
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+}
+.preview-wrapper{
+  display: flex;
+  gap: 1rem;
+}
+.disable-scroll {
+    overflow: hidden;
+    touch-action: none;
+}
+.button-tabs{
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  border-radius: var(--br);
+  border: 1px solid var(--color-border-primary);
+  overflow: hidden;
+}
+.button-tabs__item a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.5rem;
+  height: 50px;
+  background-color: var(--color-bg-alt);
+  border-right: 1px solid var(--color-border-primary);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+.button-tabs__item.active a{
+  background-color: var(--color-bg);
+  font-weight: bold;
+  color: var(--color-primary);
+}
+.button-tabs__item a:hover{
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  text-decoration: none;
 }

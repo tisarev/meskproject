@@ -494,21 +494,25 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('click', (e) => {
         // открытие: клик по кнопке с data-modal-open
         const opener = e.target.closest('[data-modal-open]');
+        const body = document.body;
         if (opener) {
             const name = opener.dataset.modalOpen;
             const dialog = document.querySelector(`dialog[data-modal="${name}"]`);
             dialog?.showModal();
+            body.classList.add('disable-scroll');
             return;
         }
         // закрытие по кнопке с data-modal-close
         const closer = e.target.closest('[data-modal-close]');
         if (closer) {
             closer.closest('dialog')?.close();
+            body.classList.remove('disable-scroll');
             return;
         }
         // закрытие по клику на тёмную область (::backdrop)
         if (e.target.tagName === 'DIALOG' && e.target.hasAttribute('data-modal')) {
             e.target.close();
+            body.classList.remove('disable-scroll');
         }
         });
 

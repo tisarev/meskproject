@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+    <link href="../assets/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/style.css?v=1.0" rel="stylesheet" type="text/css">
+
+    <script src="../components/my-menu.js" defer></script>
+    <script src="../components/my-footer.js" defer></script>
+
+    <title>Интелектуальная система учета</title>
+</head>
+<body>
+    <div id="page">
+        <my-menu></my-menu>
+        <div id="page-content">
+            <main>
+                <h1>Интелектуальная система учета</h1>
+                <div class="content">
+                    <div class="content-header" style="max-width: 500px;">
+                        <div class="input-group">
+                            <label for="type-agreement">Точка поставки</label>
+                            <div class="select-wrapper">
+                                <select id="type-agreement">
+                                <option value="" disabled selected>Выберите из списка</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="4">5</option>
+                                </select>
+                                <svg class="custom-arrow" viewBox="0 0 24 24">
+                                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="type-agreement">Прибор учета</label>
+                            <div class="select-wrapper">
+                                <select id="type-agreement">
+                                <option value="" disabled selected>Выберите из списка</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="4">5</option>
+                                </select>
+                                <svg class="custom-arrow" viewBox="0 0 24 24">
+                                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="button-tabs">
+                        <div class="button-tabs__item"><a href="../accounting-system.html">Параметры сети</a></div>
+                        <div class="button-tabs__item active"><a href="./maximum.html">Максимум (минимум) потребляемой мощности</a></div>
+                        <div class="button-tabs__item"><a href="./consumption.html">Потребление энергоресурсов</a></div>
+                    </div>
+                    <div class="form-group" style="width: 600px;">
+                        <div class="input-group">
+                            <label for="texxtcalendardate">Начало периода</label>
+                            <div class="input-wrapper">
+                                <input type="month" class="custom-date-input" id="text-calendardate" value="2025-01" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="texxtcalendardate">Окончание периода</label>
+                            <div class="input-wrapper">
+                                <input type="month" class="custom-date-input" id="text-calendardate" value="2025-05" required>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-primary">Применить</button>
+                    </div>
+                    <div class="content-block content-padding">
+                        <h3>Результат вывода фактической мощности за период</h3>
+                        <table class="table-ui">
+                            <thead>
+                                <tr>
+                                    <th>№ п/п</th>
+                                    <th>Дата</th>
+                                    <th>Время</th>
+                                    <th>Значение мощности</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <tr>
+                                    <td>1</td>
+                                    <td>24.02.2022</td>
+                                    <td>00:00 - 01:00</td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>24.02.2022</td>
+                                    <td>01:00 - 02:00</td>
+                                    <td>34</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>24.02.2022</td>
+                                    <td>02:00 - 03:00</td>
+                                    <td>25</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>24.02.2022</td>
+                                    <td>00:00 - 01:00</td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>24.02.2022</td>
+                                    <td>03:00 - 04:00</td>
+                                    <td>36</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>24.02.2022</td>
+                                    <td>04:00 - 05:00</td>
+                                    <td>19</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>24.02.2022</td>
+                                    <td>05:00 - 06:00</td>
+                                    <td>48</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>24.02.2022</td>
+                                    <td>06:00 - 07:00</td>
+                                    <td>35</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>24.02.2022</td>
+                                    <td>07:00 - 08:00</td>
+                                    <td>44</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>24.02.2022</td>
+                                    <td>08:00 - 09:00</td>
+                                    <td>28</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>24.02.2022</td>
+                                    <td>09:00 - 10:00</td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>24.02.2022</td>
+                                    <td>10:00 - 11:00</td>
+                                    <td>15</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>24.02.2022</td>
+                                    <td>11:00 - 12:00</td>
+                                    <td>12</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>24.02.2022</td>
+                                    <td>12:00 - 13:00</td>
+                                    <td>39</td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>24.02.2022</td>
+                                    <td>13:00 - 14:00</td>
+                                    <td>42</td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>24.02.2022</td>
+                                    <td>14:00 - 15:00</td>
+                                    <td>39</td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>24.02.2022</td>
+                                    <td>15:00 - 16:00</td>
+                                    <td>40</td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>24.02.2022</td>
+                                    <td>16:00 - 17:00</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>24.02.2022</td>
+                                    <td>17:00 - 18:00</td>
+                                    <td>17</td>
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td>24.02.2022</td>
+                                    <td>18:00 - 19:00</td>
+                                    <td>8</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+            
+            <my-footer></my-footer>
+        </div>
+    </div>
+    <script src="./assets/js/main.js" defer></script>
+</body>
+</html>
