@@ -213,12 +213,22 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="content-block content-padding">
+                        <h3>Потребление</h3>
+                        <div class="chart-wrap" data-chart="consumption-line"
+                            data-values='[34,20,5,38,28,49,36,56,3,0,26,19,0,40,44,36,0,2,60,44]'
+                            data-labels='["24.02 00:00","24.02 01:00","24.02 02:00","24.02 03:00"]'>
+                        <canvas></canvas>
+                        </div>
+                    </div>
                 </div>
             </main>
             
             <my-footer></my-footer>
         </div>
     </div>
-    <script src="./assets/js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="../assets/js/charts.js"></script>
+    <script src="../assets/js/main.js" defer></script>
 </body>
 </html>

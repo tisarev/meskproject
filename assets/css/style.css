@@ -269,6 +269,14 @@ h1{
 .form-toggle_item:has(input:checked) {
   background-color: var(--color-bg-alt);
 }
+.content-header .form-toggle_item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.content-header .form-toggle_item:has(input:checked) {
+  background-color: var(--color-bg);
+}
 .form-toggle_item label {
   cursor: pointer;
 }
@@ -1212,4 +1220,13 @@ h4{
   background-color: var(--color-bg);
   color: var(--color-primary);
   text-decoration: none;
+}
+.chart-wrap {
+  position: relative;
+  height: 300px;
+}
+.content-header__wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
