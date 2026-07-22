@@ -24,7 +24,7 @@
                 <h1>Обращения</h1>
                 <div class="content">
                     <div class="appeals-menu">
-                        <a href="" class="appeals-menu__item">
+                        <a href="./appeals/list-requests.html" class="appeals-menu__item">
                             <img src="./assets/img/icons/appeals-1.svg">
                             Заявки по договору
                         </a>
@@ -52,6 +52,162 @@
                             <img src="./assets/img/icons/appeals-7.svg">
                             Черновики
                         </a>
+                    </div>
+                    <h2 class="h2-pb">История обращений</h2>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="number-doc">Номер договора</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="number-doc">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="text-calendardate">Дата обращения</label>
+                            <div class="input-wrapper">
+                                <input type="month" class="custom-date-input" id="text-calendardate" value="2025-05" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="type-agreement">Тема обращения</label>
+                            <div class="select-wrapper">
+                                <select id="type-agreement">
+                                <option value="" disabled selected>Выберите из списка</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                </select>
+                                <svg class="custom-arrow" viewBox="0 0 24 24">
+                                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="type-agreement">Статус</label>
+                            <div class="select-wrapper">
+                                <select id="type-agreement">
+                                <option value="" disabled selected>Выберите из списка</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                </select>
+                                <svg class="custom-arrow" viewBox="0 0 24 24">
+                                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-primary">Найти</button>
+                        <button type="button" class="btn-secondary">Очистить</button>
+                    </div>
+                    <div class="content-block content-padding">
+                        <h3>Обращения</h3>
+                        <table class="table-ui">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 60px;">№ п/п</th>
+                                    <th>Дата</th>
+                                    <th>№ договора</th>
+                                    <th>Тема обращения</th>
+                                    <th>Обращение</th>
+                                    <th>Статус</th>
+                                    <th>Последнее обнов.</th>
+                                    <th>Ответ</th>
+                                    <th>Документы</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <tr>
+                                    <td>123</td>
+                                    <td>30.06.2026</td>
+                                    <td>123456</td>
+                                    <td>Заявки по договору</td>
+                                    <td>Подача заявления на включение точки поставки</td>
+                                    <td><div class="status-element status-draft">Черновик</div></td>
+                                    <td>30.06.2026</td>
+                                    <td>—</td>
+                                    <td><a href="" class="file-element">Файл</a></td>
+                                    <td>
+                                        <div class="icon-wrapper">
+                                            <div class="icon icon-resume" data-tooltip="Продолжить оформление"></div>
+                                            <div class="icon icon-delete" data-tooltip="Удалить"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>456</td>
+                                    <td>30.06.2026</td>
+                                    <td>123456</td>
+                                    <td>Заявки по договору</td>
+                                    <td>Подача заявления на включение точки поставки</td>
+                                    <td><div class="status-element status-shipped">Отправлено</div></td>
+                                    <td>30.06.2026</td>
+                                    <td><a href="">Посмотреть</a></td>
+                                    <td>—</td>
+                                    <td>
+                                        <div class="icon-wrapper">
+                                            <div class="icon icon-open" data-tooltip="Открыть"></div>
+                                            <div class="icon icon-cancel" data-tooltip="Отмена"></div>
+                                            <div class="icon icon-download" data-tooltip="Скачать"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>789</td>
+                                    <td>30.06.2026</td>
+                                    <td>123456</td>
+                                    <td>Заявки по договору</td>
+                                    <td>Подача заявления на включение точки поставки</td>
+                                    <td><div class="status-element status-clarify">Требуется уточнение</div></td>
+                                    <td>30.06.2026</td>
+                                    <td><a href="">Посмотреть</a></td>
+                                    <td><a href="" class="file-element">Файл</a></td>
+                                    <td>
+                                        <div class="icon-wrapper">
+                                            <div class="icon icon-open" data-tooltip="Открыть"></div>
+                                            <div class="icon icon-clarify" data-tooltip="Предоставить уточнение"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>012</td>
+                                    <td>30.06.2026</td>
+                                    <td>123456</td>
+                                    <td>Заявки по договору</td>
+                                    <td>Подача заявления на включение точки поставки</td>
+                                    <td><div class="status-element status-draft">Черновик</div></td>
+                                    <td>30.06.2026</td>
+                                    <td>—</td>
+                                    <td><a href="" class="file-element">Файл</a></td>
+                                    <td>
+                                        <div class="icon-wrapper">
+                                            <div class="icon icon-resume" data-tooltip="Продолжить оформление"></div>
+                                            <div class="icon icon-delete" data-tooltip="Удалить"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>345</td>
+                                    <td>30.06.2026</td>
+                                    <td>123456</td>
+                                    <td>Заявки по договору</td>
+                                    <td>Подача заявления на включение точки поставки</td>
+                                    <td><div class="status-element status-cancel">Отменено</div></td>
+                                    <td>30.06.2026</td>
+                                    <td><a href="">Посмотреть</a></td>
+                                    <td>—</td>
+                                    <td>
+                                        <div class="icon-wrapper">
+                                            <div class="icon icon-open" data-tooltip="Открыть"></div>
+                                            <div class="icon icon-cancel" data-tooltip="Отмена"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </main>
