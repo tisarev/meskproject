@@ -1398,3 +1398,33 @@ a.link-appealspages__item:hover{
   background-color: var(--color-bg-alt);
   border-color: var(--color-primary);
 }
+.button-link{
+  color: var(--color-primary);
+  cursor: pointer;
+}
+.button-link:hover{
+  text-decoration: underline;
+  color: var(--color-primary-hover);
+}
+h5{
+  color: var(--color-text-secondary);
+  margin-bottom: 0.3rem;
+}
+.dialog-row{
+  display: flex;
+  gap: 1rem;
+}
+.dialog-buttons{
+  display: flex;
+  justify-content: space-between;
+}
+.dialog-buttons__left{
+  display: flex;
+  gap: 0.5rem;
+}
+.modal-body__space-between{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
+}

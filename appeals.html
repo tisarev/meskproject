@@ -145,7 +145,7 @@
                                     <td>Подача заявления на включение точки поставки</td>
                                     <td><div class="status-element status-shipped">Отправлено</div></td>
                                     <td>30.06.2026</td>
-                                    <td><a href="">Посмотреть</a></td>
+                                    <td><div class="button-link" data-modal-open="look">Посмотреть</div></td>
                                     <td>—</td>
                                     <td>
                                         <div class="icon-wrapper">
@@ -163,7 +163,7 @@
                                     <td>Подача заявления на включение точки поставки</td>
                                     <td><div class="status-element status-clarify">Требуется уточнение</div></td>
                                     <td>30.06.2026</td>
-                                    <td><a href="">Посмотреть</a></td>
+                                    <td><div class="button-link" data-modal-open="look">Посмотреть</div></td>
                                     <td><a href="" class="file-element">Файл</a></td>
                                     <td>
                                         <div class="icon-wrapper">
@@ -197,7 +197,7 @@
                                     <td>Подача заявления на включение точки поставки</td>
                                     <td><div class="status-element status-cancel">Отменено</div></td>
                                     <td>30.06.2026</td>
-                                    <td><a href="">Посмотреть</a></td>
+                                    <td><div class="button-link" data-modal-open="look">Посмотреть</div></td>
                                     <td>—</td>
                                     <td>
                                         <div class="icon-wrapper">
@@ -214,6 +214,54 @@
             
             <my-footer></my-footer>
         </div>
+        <dialog data-modal="look" class="classicModal">
+            <div class="modal-body">
+                <div class="modal-body__header">
+                    <div class="modal-body__space-between">
+                        <h2>Заявки по договору</h2>
+                        <div class="status-element status-shipped">Отправлено</div>
+                    </div>
+                    <button data-modal-close class="close-icon">&times;</button>
+                </div>
+                <div class="dialog-textblock">
+                    <h5>Тема обращения</h5>
+                    <p>Подача заявления на включение точки поставки</p>
+                </div>
+                <div class="dialog-row">
+                    <div class="dialog-textblock">
+                        <h5>Дата подачи</h5>
+                        <p>30.06.2026</p>
+                    </div>
+                    <div class="dialog-textblock">
+                        <h5>Последнее обновление</h5>
+                        <p>01.07.2026</p>
+                    </div>
+                </div>
+                <div class="dialog-textblock">
+                    <h5>Обращение</h5>
+                    <p>Что такое электронное правительство и кто выполняет работы по его эксплуатации?</p>
+                </div>
+                <div class="dialog-textblock">
+                    <h5>Ответ</h5>
+                    <p>Чтобы внести данные о ребенке в личный кабинет, откройте страницу своего профиля, пролистайте вниз и в пункте «Семья и дети» выберите «Добавить ребенка». Перед вами появится форма, куда нужно внести ФИО ребенка, выбрать пол и дату рождения.</p>
+                    <p>Если у ребенка есть свидетельство о рождении, полис ОМС, СНИЛС или ИНН, укажите их в той же форме. Это поможет не возвращаться к документам при подаче заявок, например, на оформление материнского капитала, для записи в детский сад или заявки на детский загранпаспорт. Формы заполнятся автоматически по данным из профиля.</p>
+                    <p>Вы можете привязать профиль ребенка к своей учетной записи. Для этого в личном кабинете ребенка заполните данные свидетельства о рождении. После этого нажмите кнопку «Привязать» в карточке «Привязка учетной записи». В появившееся поле добавьте номер из 15—16 цифр: их вы найдете в карточке ребенка в вашем личном кабинете. Теперь данные о родителях будут отображаться в личном кабинете ребенка.</p>
+                </div>
+                <div class="dialog-textblock">
+                    <h5>Файл</h5>
+                    <a href="" class="file-element">Файл</a>
+                </div>
+                <br>
+                <hr>
+                <div class="dialog-buttons">
+                    <div class="dialog-buttons__left">
+                        <button class="btn btn-primary">Скачать</button>
+                        <button class="btn btn-secondary">Отменить обращение</button>
+                    </div>
+                    <button data-modal-close class="btn btn-secondary">Закрыть</button>
+                </div>
+        </dialog>
     </div>
+    <script src="./assets/js/main.js" defer></script>
 </body>
 </html>
