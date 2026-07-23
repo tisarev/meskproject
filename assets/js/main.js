@@ -644,4 +644,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         document.querySelectorAll('[data-dropzone]').forEach(el => initFileDropzone(el.parentElement || el));
+
+        // --------------------------------------------
+        // Аккардион
+        function initFaqAccordion() {
+        const faqRoot = document.querySelector('[data-faq]');
+        if (!faqRoot) return;
+
+        faqRoot.addEventListener('click', (e) => {
+            const toggle = e.target.closest('[data-faq-toggle]');
+            if (!toggle) return;
+
+            const item = toggle.closest('[data-faq-item]');
+            const isActive = item.classList.contains('active');
+
+            item.classList.toggle('active', !isActive);
+        });
+        }
+        initFaqAccordion();
 });

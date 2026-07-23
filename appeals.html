@@ -44,7 +44,7 @@
                             <img src="./assets/img/icons/appeals-5.svg">
                             Иное
                         </a>
-                        <a href="" class="appeals-menu__item">
+                        <a href="./appeals/question-answer.html" class="appeals-menu__item">
                             <img src="./assets/img/icons/appeals-6.svg">
                             Часто задаваемые вопросы
                         </a>
@@ -256,7 +256,29 @@
                 <div class="dialog-buttons">
                     <div class="dialog-buttons__left">
                         <button class="btn btn-primary">Скачать</button>
-                        <button class="btn btn-secondary">Отменить обращение</button>
+                        <button class="btn btn-secondary" data-modal-open="look2">Отменить обращение</button>
+                    </div>
+                    <button data-modal-close class="btn btn-secondary">Закрыть</button>
+                </div>
+        </dialog>
+        <dialog data-modal="look2" class="classicModal">
+            <div class="modal-body">
+                <div class="modal-body__header">
+                    <h2>Отмена обращения</h2>
+                    <button data-modal-close class="close-icon">&times;</button>
+                </div>
+               <p>Вы уверены что хотите отменить свое обращение <br><b>Название обращения</b></p>
+               <div class="textarea-group">
+                    <label>Укажите причину отмены</label>
+                    <div class="textarea-wrapper">
+                        <textarea></textarea>
+                    </div>
+                </div>
+                <hr>
+                <div class="dialog-buttons">
+                    <div class="dialog-buttons__left">
+                        <button class="btn btn-primary">Да</button>
+                        <button class="btn btn-secondary">Нет</button>
                     </div>
                     <button data-modal-close class="btn btn-secondary">Закрыть</button>
                 </div>

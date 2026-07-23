@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+    <link href="../assets/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/style.css?v=1.0" rel="stylesheet" type="text/css">
+
+    <script src="../components/my-menu.js" defer></script>
+    <script src="../components/my-footer.js" defer></script>
+
+    <title>Подача заявления на заключение договора</title>
+</head>
+<body>
+    <div id="page">
+        <my-menu></my-menu>
+        <div id="page-content">
+            <main>
+                <h1>Подача заявления на заключение договора</h1>
+                <div class="content">
+                    <div class="link-back__wrapper">
+                        <a href="" class="link-back__blue">
+                            Заключение договора
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.26156 0.153847C1.26156 0.153847 0.500047 -0.192308 0.153893 0.153846C-0.192261 0.5 0.153868 1.26154 0.153868 1.26154L3.89233 5L0.153868 8.73846C0.153868 8.73846 -0.192318 9.5 0.153842 9.84615C0.500001 10.1923 1.26156 9.84615 1.26156 9.84615L5.00002 6.10769L8.73848 9.84615C8.73848 9.84615 9.49999 10.1923 9.84615 9.84615C10.1923 9.5 9.84617 8.73846 9.84617 8.73846L6.10771 5L9.84617 1.26154C9.84617 1.26154 10.1924 0.499962 9.84615 0.153846C9.49994 -0.19227 8.73848 0.153846 8.73848 0.153846L5.00002 3.89231L1.26156 0.153847Z" fill="#F4F6F9"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="link-back__wrapper">
+                        <a href="" class="link-back__orange">
+                            Подача заявления на заключение договора
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.26156 0.153847C1.26156 0.153847 0.500047 -0.192308 0.153893 0.153846C-0.192261 0.5 0.153868 1.26154 0.153868 1.26154L3.89233 5L0.153868 8.73846C0.153868 8.73846 -0.192318 9.5 0.153842 9.84615C0.500001 10.1923 1.26156 9.84615 1.26156 9.84615L5.00002 6.10769L8.73848 9.84615C8.73848 9.84615 9.49999 10.1923 9.84615 9.84615C10.1923 9.5 9.84617 8.73846 9.84617 8.73846L6.10771 5L9.84617 1.26154C9.84617 1.26154 10.1924 0.499962 9.84615 0.153846C9.49994 -0.19227 8.73848 0.153846 8.73848 0.153846L5.00002 3.89231L1.26156 0.153847Z" fill="#F4F6F9"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="content-empty">
+                    <div class="content-700">
+
+                        
+                    <div class="input-group">
+                        <label for="type-agreement">Тип договора</label>
+                        <div class="select-wrapper">
+                            <select id="type-agreement">
+                            <option value="" disabled selected>Выберите из списка</option>
+                            <option value="1">Договор 1</option>
+                            <option value="2">Договор 2</option>
+                            <option value="3">Договор 3</option>
+                            <option value="4">Договор 4</option>
+                            <option value="4">Договор 5</option>
+                            </select>
+                            <svg class="custom-arrow" viewBox="0 0 24 24">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <fieldset>
+                        <legend>Точки поставки</legend>
+                        <div class="point-group" data-point-group>
+                            <div class="input-group">
+                                <label for="delivery-point-1">Наименование точки поставки</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="delivery-point-1" required>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="address-point-1">Адрес точки поставки</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="address-point-1" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="maximum-power-1">Максимальная мощность, кВт</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="maximum-power-1">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="price-category-1">Ценовая категория</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="price-category-1">
+                                    </div>
+                                </div>
+                                <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-secondary" data-add-group style="width: 200px;">Добавить ещё</button>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Документы (Формат PDF, JPG, JPEG, TIFF)</legend>
+                        <div class="warning-text">
+                            Ниже указан перечень обязательных документов. Если у вас есть дополнительные документы, относящиеся к подключению, вы можете загрузить их в раздел “Иные документы”. Размер каждого файла должен быть не более 5 МБ, формат — PDF.
+                        </div>
+                        
+                            <div class="input-group">
+                                <label>Документы подтверждающие технологич. присоединение (АТП, Уведомления)</label>
+                                <div class="point-group" data-point-group>
+                                    <div class="file-wrapper form-group">
+                                        <div class="file-box">
+                                            <span class="file-name"></span>
+                                        </div>
+                                        <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                        <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden required>
+                                        <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
+                                    </div>
+                                </div>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox">
+                                    <span class="custom-checkbox"></span>
+                                    <span class="label-text">
+                                        Единый акт тех присоединения
+                                    </span>
+                                </label>
+                                <button type="button" class="btn-secondary" data-add-group>Добавить ещё</button>
+                            </div>
+                        
+                        <hr>
+                        <div class="input-group">
+                            <label>Документы на прибор учета </label>
+                            <div class="point-group" data-point-group>
+                                <div class="file-wrapper form-group">
+                                    <div class="file-box">
+                                        <span class="file-name"></span>
+                                    </div>
+                                    <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                    <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden>
+                                    <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
+                                </div>
+                            </div>
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox">
+                                <span class="custom-checkbox"></span>
+                                <span class="label-text">
+                                    Один пакет документов на все приборы учета
+                                </span>
+                            </label>
+                            <button type="button" class="btn-secondary" data-add-group>Добавить ещё</button>
+                        </div>
+                        <hr>
+                        <div class="input-group">
+                            <label>Правоустанавливающие документы на точки поставки</label>
+                            <div class="point-group" data-point-group>
+                                <div class="file-wrapper form-group">
+                                    <div class="file-box">
+                                        <span class="file-name"></span>
+                                    </div>
+                                    <button type="button" class="file-btn btn-secondary">Выбрать файл</button>
+                                    <input type="file" class="file-input"  accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden required>
+                                    <button type="button" class="remove-group" data-remove-group hidden aria-label="Удалить точку">&times;</button>
+                                </div>
+                            </div>
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox">
+                                <span class="custom-checkbox"></span>
+                                <span class="label-text">
+                                    Один пакет документов
+                                </span>
+                            </label>
+                            <button type="button" class="btn-secondary" data-add-group>Добавить ещё</button>
+                        </div>
+                        <div class="input-group">
+                            <div class="dropzone-block" data-dropzone-block>
+                                <label>Иные документы</label>
+                                <div class="dropzone" data-dropzone>
+                                    <p class="dropzone-text">Перетащите документы или изображения сюда, чтобы начать загрузку</p>
+                                    <p class="dropzone-or">или</p>
+                                    <button type="button" class="btn-secondary dropzone-btn" data-dropzone-btn>Нажмите, чтобы выбрать файлы</button>
+                                    <input type="file" class="dropzone-input" data-dropzone-input multiple accept=".pdf,.jpg,.jpeg,.tiff,.tif" hidden>
+                                </div>
+                                <ul class="dropzone-file-list" data-dropzone-file-list></ul>
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                    <hr>
+                    <div class="input-group">
+                        <label for="type-agreement">Cпособ направления договора</label>
+                        <div class="select-wrapper">
+                            <select id="type-agreement">
+                            <option value="" disabled selected>Выберите способ направления договора</option>
+                            <option value="1">Договор 1</option>
+                            <option value="2">Договор 2</option>
+                            <option value="3">Договор 3</option>
+                            <option value="4">Договор 4</option>
+                            <option value="4">Договор 5</option>
+                            </select>
+                            <svg class="custom-arrow" viewBox="0 0 24 24">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn-primary">Подать заявление</button>
+                        <button class="btn">Предварительный просмотр</button>
+                        <button class="btn btn-draft">Сохранить Черновик</button>
+                    </div>
+                    <br>
+                    <p>С перечнем обязательных документов для заключения договора можете ознакомиться в разделе <a href="">«Часто задаваемые вопросы»</a></p>
+                    <br>
+                    </div>
+                    </div>
+                </div>
+            </main>
+            <my-footer></my-footer>
+        </div>
+    </div>
+    <script src="../assets/js/main.js" defer></script>
+</body>
+</html>
