@@ -22,13 +22,87 @@
         <div id="page-content">
             <main>
                 <h1>Документы</h1>
-                <div class="content">
-                    Информация
+                <div class="input-group" style="flex: 0; max-width:300px ;">
+                    <label for="for-period">За периода</label>
+                    <div class="input-wrapper">
+                        <input type="month" class="custom-date-input" id="for-period" value="2025-01" required>
+                    </div>
                 </div>
+                <div class="content-block">
+                        <div class="content-block__wrapper">
+                            <div class="padding-b-1 mb-1">
+                            <h3>Счет</h3>
+                            <a href="" download="" class="btn btn-secondary">Скачать</a>
+                            </div>
+                            <hr>
+                            <div class="padding-b-1 mb-1">
+                            <h3>Счет-фактура и акт приема-передачи</h3>
+                            <a href="" download="" class="btn btn-secondary">Скачать</a>
+                            </div>
+                            <hr>
+                            <div class="padding-b-1 mb-1">
+                            <h3>Ведомость потребления ЭЭ и мощности</h3>
+                            <a href="" download="" class="btn btn-secondary">Скачать</a>
+                            </div>
+                            <hr>
+                            <div class="mb-1">
+                                <h2>Акт сверки</h3>
+                                <div class="form-group" style="width: 500px;">
+                                    <div class="input-group">
+                                        <label for="texxtcalendardate">Начало периода</label>
+                                        <div class="input-wrapper">
+                                            <input type="month" class="custom-date-input" id="text-calendardate" value="2025-01">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="texxtcalendardate">Окончание периода</label>
+                                        <div class="input-wrapper">
+                                            <input type="month" class="custom-date-input" id="text-calendardate" value="2025-05">
+                                        </div>
+                                    </div>
+                                    <a href="" download="" class="btn btn-secondary">Скачать</a>
+                                </div>
+                            </div>
+                            <hr>
+                            <h3>Договор</h3>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="contract-number">Номер договора</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="contract-number">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="registration-date">Дата регистрации</label>
+                                    <div class="input-wrapper">
+                                        <input type="month" class="custom-date-input" id="registration-date" value="2025-05">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                <label for="type-agreement">Статус</label>
+                                <div class="select-wrapper">
+                                    <select id="type-agreement">
+                                    <option value="" disabled selected>Выберите из списка</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    </select>
+                                    <svg class="custom-arrow" viewBox="0 0 24 24">
+                                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                                <a href="" download="" class="btn btn-secondary">Скачать сканы</a>
+                            </div>
+                        </div>
+                    </div>
             </main>
             
             <my-footer></my-footer>
         </div>
     </div>
+    <script src="./assets/js/main.js" defer></script>
 </body>
 </html>
