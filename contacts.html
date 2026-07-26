@@ -13,6 +13,7 @@
 
     <script src="./components/my-menu.js" defer></script>
     <script src="./components/my-footer.js" defer></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript"></script>
 
     <title>Контактная информация</title>
 </head>
@@ -23,12 +24,242 @@
             <main>
                 <h1>Контактная информация</h1>
                 <div class="content">
-                    Информация
+                    <div class="contacts-map-wrap">
+                        <!--
+                            Контейнер карты. data-api-url задаёт эндпоинт, откуда подтягиваются точки.
+                            Формат ответа API — см. комментарий MOCK_POINTS в скрипте ниже.
+                        -->
+                        <div
+                            class="contacts-map"
+                            id="contactsMap"
+                            data-api-url="/api/contacts-points"
+                            data-logo-src="./assets/img/logo.jpg"
+                        >
+                            <div class="contacts-map-status" data-map-status>Загрузка карты…</div>
+                        </div>
+                    </div>
+                    <script>
+                    (function () {
+                        'use strict';
+
+                        // Точки-заглушка на случай отсутствия/ошибки API — тот же формат,
+                        // что должен отдавать бэкенд. phone2 и workSchedule — необязательные поля.
+                        var MOCK_POINTS = [
+                        {
+                            id: 'sr1',
+                            city: 'Саранское межрайонное отделение',
+                            lat: 54.218596,
+                            lng: 45.160297,
+                            address: '430034, г. Саранск, ул. Лодыгина, 6',
+                            phone: '8 (8342) 75-51-56',
+                            phone2: '8 (8342) 23-48-33 Катаскин Василий Алексеевич - Начальник Саранского МО'
+                        },
+                        {
+                            id: 'sr2',
+                            city: 'Саранское межрайонное отделение',
+                            lat: 54.218596,
+                            lng: 45.160297,
+                            address: '430034, г. Саранск, ул. Лодыгина, 6',
+                            phone: '8 (8342) 75-51-56',
+                            phone2: '8 (8342) 23-48-33 Катаскин Василий Алексеевич - Начальник Саранского МО',
+                            email: 'moscow@info-pro.ru',
+                            workSchedule: 'Пн–Пт, 9:00–18:00'
+                        },
+                        {
+                            id: 'ekb',
+                            city: 'Екатеринбург',
+                            lat: 56.838011,
+                            lng: 60.597465,
+                            address: 'г. Екатеринбург, ул. Ленина, д. 5',
+                            phone: '+7 (343) 000-00-00',
+                            email: 'ekb@info-pro.ru',
+                            workSchedule: 'Пн–Пт, 9:00–18:00'
+                        }
+                        ];
+
+                        function escapeHtml(str) {
+                        var div = document.createElement('div');
+                        div.textContent = str == null ? '' : String(str);
+                        return div.innerHTML;
+                        }
+
+                        function buildBalloonHtml(point) {
+                        var rows = '';
+
+                        if (point.phone) {
+                            rows += (
+                            '<div class="contacts-balloon-row">' +
+                                '<span>☎</span>' +
+                                '<div>' + escapeHtml(point.phone) + '</div>' +
+                            '</div>'
+                            );
+                        }
+
+                        if (point.phone2) {
+                            rows += (
+                            '<div class="contacts-balloon-row">' +
+                                '<span>☎</span>' +
+                                '<div>' + escapeHtml(point.phone2) + '</div>' +
+                            '</div>'
+                            );
+                        }
+
+                        if (point.email) {
+                            rows += (
+                            '<div class="contacts-balloon-row">' +
+                                '<span>✉</span>' +
+                                '<div>' + escapeHtml(point.email) + '</div>' +
+                            '</div>'
+                            );
+                        }
+
+                        if (point.workSchedule) {
+                            rows += (
+                            '<div class="contacts-balloon-row">' +
+                                '<span>🕒</span>' +
+                                '<div>' + escapeHtml(point.workSchedule) + '</div>' +
+                            '</div>'
+                            );
+                        }
+
+                        return (
+                            '<div class="contacts-balloon">' +
+                            '<p class="contacts-balloon-city">' + escapeHtml(point.city) + '</p>' +
+                            '<p class="contacts-balloon-address">' + escapeHtml(point.address) + '</p>' +
+                            rows +
+                            '</div>'
+                        );
+                        }
+
+                        function initContactsMap() {
+                        var container = document.getElementById('contactsMap');
+                        if (!container) return;
+
+                        var statusEl = container.querySelector('[data-map-status]');
+                        var apiUrl = container.dataset.apiUrl;
+                        var logoSrc = container.dataset.logoSrc;
+
+                        ymaps.ready(function () {
+                            var map = new ymaps.Map(container, {
+                            center: [55.751244, 37.618423],
+                            zoom: 4,
+                            controls: ['zoomControl']
+                            }, {
+                            suppressMapOpenBlock: true
+                            });
+
+                            // Кастомный макет метки — HTML-логотип компании вместо стандартной иконки.
+                            // $[properties.markerId] подставляется Яндекс.Картами из properties плейсмарки.
+                            var CompanyIconLayout = ymaps.templateLayoutFactory.createClass(
+                            '<div class="company-marker" data-marker-id="$[properties.markerId]">' +
+                                '<img src="' + logoSrc + '" alt="Логотип компании">' +
+                            '</div>'
+                            );
+
+                            function clearActiveMarkers() {
+                            container.querySelectorAll('.company-marker.is-active').forEach(function (el) {
+                                el.classList.remove('is-active');
+                            });
+                            }
+
+                            function setActiveMarker(pointId) {
+                            clearActiveMarkers();
+                            var markerEl = container.querySelector('.company-marker[data-marker-id="' + pointId + '"]');
+                            if (markerEl) markerEl.classList.add('is-active');
+                            }
+
+                            function renderPoints(points) {
+                            if (!points || !points.length) {
+                                if (statusEl) {
+                                statusEl.textContent = 'Точки не найдены';
+                                statusEl.hidden = false;
+                                }
+                                return;
+                            }
+
+                            var placemarks = [];
+
+                            points.forEach(function (point) {
+                                var placemark = new ymaps.Placemark(
+                                [point.lat, point.lng],
+                                {
+                                    markerId: point.id,
+                                    balloonContentBody: buildBalloonHtml(point),
+                                    hintContent: point.city
+                                },
+                                {
+                                    iconLayout: CompanyIconLayout,
+                                    iconShape: {
+                                    type: 'Circle',
+                                    coordinates: [22, 22],
+                                    radius: 22
+                                    },
+                                    balloonPanelMaxMapArea: 0,
+                                    balloonOffset: [0, -20],
+                                    hideIconOnBalloonOpen: false
+                                }
+                                );
+
+                                // Подсветка активной метки при открытии/закрытии тултипа
+                                placemark.events.add('balloonopen', function () {
+                                setActiveMarker(point.id);
+                                });
+                                placemark.events.add('balloonclose', function () {
+                                clearActiveMarkers();
+                                });
+
+                                map.geoObjects.add(placemark);
+                                placemarks.push(placemark);
+                            });
+
+                            if (placemarks.length > 1) {
+                                map.setBounds(map.geoObjects.getBounds(), {
+                                checkZoomRange: true,
+                                zoomMargin: 40
+                                });
+                            } else if (placemarks.length === 1) {
+                                map.setCenter([points[0].lat, points[0].lng], 12);
+                            }
+
+                            if (statusEl) statusEl.hidden = true;
+                            }
+
+                            function loadPoints() {
+                            if (!apiUrl) {
+                                renderPoints(MOCK_POINTS);
+                                return;
+                            }
+
+                            fetch(apiUrl, { headers: { 'Accept': 'application/json' } })
+                                .then(function (res) {
+                                if (!res.ok) throw new Error('HTTP ' + res.status);
+                                return res.json();
+                                })
+                                .then(function (data) {
+                                var points = Array.isArray(data) ? data : (data && data.points) || [];
+                                renderPoints(points.length ? points : MOCK_POINTS);
+                                })
+                                .catch(function (err) {
+                                console.warn('Не удалось загрузить точки с API, используются тестовые данные:', err);
+                                renderPoints(MOCK_POINTS);
+                                });
+                            }
+
+                            loadPoints();
+                        });
+                        }
+
+                        document.addEventListener('DOMContentLoaded', function () {
+                        initContactsMap();
+                        });
+                    })();
+                    </script>
                 </div>
             </main>
             
             <my-footer></my-footer>
         </div>
     </div>
+    <script src="./assets/js/main.js" defer></script>
 </body>
 </html>
