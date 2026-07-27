@@ -1586,10 +1586,11 @@ h5{
   width: 100%;
   height: 500px;
   border-radius: var(--br);
-  border: 1px solid var(--color-border-secondary);
+  border: 3px solid var(--color-bg);
   overflow: hidden;
   position: relative;
   background: var(--color-bg-alt);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 .contacts-map-status {
@@ -1642,13 +1643,13 @@ h5{
 
 /* Балун (тултип) с данными точки */
 .contacts-balloon {
-  padding: 16px 18px;
-  width: 240px;
+  padding: 0;
+  width: 300px;
   font-family: inherit;
 }
 
 .contacts-balloon-city {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--color-primary);
   text-transform: uppercase;
@@ -1660,7 +1661,7 @@ h5{
   font-size: 14px;
   color: var(--color-text-black);
   margin: 0 0 10px;
-  line-height: 1.4;
+  line-height: 1.2;
 }
 
 .contacts-balloon-row {
@@ -1684,4 +1685,89 @@ h5{
 .ymaps-2-1-79-balloon__content,
 .ymaps-2-1-79-b-balloon__content {
   margin: 0 !important;
+}
+.contacts-map-wrap hr{
+  margin-bottom: 0.5rem;
+}
+.ymaps-2-1-79-balloon__close+.ymaps-2-1-79-balloon__content{
+  padding-right: 10px;
+}
+.contacts-tabs{
+  margin-top: 1rem;
+}
+
+.tabs-container {
+    overflow: hidden;
+}
+
+.tabs-header {
+    display: flex;
+    border-bottom: 1px solid var(--color-border-secondary);
+}
+
+.tab-button {
+    flex: 1;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    outline: none;
+}
+
+.tab-button:hover {
+    background: #e9ecef;
+    color: #495057;
+}
+
+.tab-button.active {
+    color: #667eea;
+    background: white;
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: var(--color-secondary);
+}
+
+.tabs-content {
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+.sidebar .select-wrapper{
+  background-image: url("data:image/svg+xml,%3Csvg width='11' height='10' viewBox='0 0 11 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.0019601 9.54219C0.0274414 9.35558 0.0470424 9.16704 0.0803641 8.98235C0.337137 7.62605 1.05845 6.56603 2.20315 5.76764C2.99503 6.50446 3.92804 6.89308 5.01786 6.89115C6.10375 6.89115 7.0348 6.50639 7.83452 5.76379C7.99329 5.88691 8.1599 6.00427 8.31279 6.13701C9.27716 6.97773 9.84558 8.02621 10.0004 9.28632C10.0102 9.37097 10.024 9.45754 10.0357 9.54219C10.0357 9.64415 10.0357 9.74804 10.0357 9.85C6.68982 9.85 3.34589 9.85 0 9.85C0.0019601 9.74804 0.0019601 9.64415 0.0019601 9.54219Z' fill='%23F8A040'/%3E%3Cpath d='M5.25503 0C5.453 0.0384766 5.65489 0.0634863 5.84698 0.117354C7.02304 0.438633 7.89332 1.46019 8.01485 2.65488C8.18342 4.3113 6.94464 5.76571 5.24915 5.9023C3.72223 6.02735 2.31684 4.95963 2.05811 3.47636C1.77977 1.89112 2.78922 0.413623 4.39062 0.0654102C4.51999 0.0365527 4.65328 0.0211621 4.78461 0C4.94141 0 5.09822 0 5.25503 0Z' fill='%23F8A040'/%3E%3C/svg%3E");
+  background-size: 12px 11px;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+.sidebar .select-wrapper select {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border: none;
+    border-radius: var(--br);
+    height: auto;
+    padding-left: 24px;
+    padding-right: 10px;
+    background: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }

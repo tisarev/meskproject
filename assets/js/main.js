@@ -662,4 +662,113 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         }
         initFaqAccordion();
+
+        //-----------------------------------------------
+        // tabs
+        class TabsManager {
+            constructor(containerSelector) {
+                this.container = document.querySelector(containerSelector);
+                this.buttons = this.container.querySelectorAll('.tab-button');
+                this.panels = this.container.querySelectorAll('.tab-panel');
+                this.currentTab = 'tab1';
+                
+                this.init();
+            }
+
+            init() {
+                this.buttons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const tabId = e.target.getAttribute('data-tab');
+                        this.switchTab(tabId);
+                    });
+                });
+
+                // Поддержка клавиатуры
+                this.buttons.forEach((button, index) => {
+                    button.addEventListener('keydown', (e) => {
+                        let targetIndex;
+                        
+                        switch(e.key) {
+                            case 'ArrowLeft':
+                                e.preventDefault();
+                                targetIndex = index > 0 ? index - 1 : this.buttons.length - 1;
+                                this.buttons[targetIndex].focus();
+                                break;
+                            case 'ArrowRight':
+                                e.preventDefault();
+                                targetIndex = index < this.buttons.length - 1 ? index + 1 : 0;
+                                this.buttons[targetIndex].focus();
+                                break;
+                            case 'Home':
+                                e.preventDefault();
+                                this.buttons[0].focus();
+                                break;
+                            case 'End':
+                                e.preventDefault();
+                                this.buttons[this.buttons.length - 1].focus();
+                                break;
+                        }
+                    });
+                });
+            }
+
+            switchTab(tabId) {
+                // Убираем активный класс со всех кнопок и панелей
+                this.buttons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
+                
+                this.panels.forEach(panel => {
+                    panel.classList.remove('active');
+                });
+
+                // Добавляем активный класс для выбранного таба
+                const activeButton = this.container.querySelector(`[data-tab="${tabId}"]`);
+                const activePanel = this.container.querySelector(`#${tabId}`);
+                
+                if (activeButton && activePanel) {
+                    activeButton.classList.add('active');
+                    activeButton.setAttribute('aria-selected', 'true');
+                    activePanel.classList.add('active');
+                    this.currentTab = tabId;
+                    
+                    // Сохраняем состояние в URL hash
+                    window.location.hash = tabId;
+                    
+                    // Пользовательское событие
+                    const event = new CustomEvent('tabChanged', {
+                        detail: { tabId: tabId }
+                    });
+                    this.container.dispatchEvent(event);
+                }
+            }
+
+            // Получить текущий активный таб
+            getCurrentTab() {
+                return this.currentTab;
+            }
+        }
+
+        // Инициализация табов
+            const tabs = new TabsManager('.tabs-container');
+            
+            // Восстановление состояния из URL hash
+            const hash = window.location.hash.slice(1);
+            if (hash) {
+                tabs.switchTab(hash);
+            }
+            
+            // Обработка изменения hash в URL
+            window.addEventListener('hashchange', () => {
+                const newHash = window.location.hash.slice(1);
+                if (newHash && newHash !== tabs.getCurrentTab()) {
+                    tabs.switchTab(newHash);
+                }
+            });
+            
+            // Пример использования пользовательского события
+            document.querySelector('.tabs-container').addEventListener('tabChanged', (e) => {
+                console.log('Переключен таб:', e.detail.tabId);
+            });
 });
