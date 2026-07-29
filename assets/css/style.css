@@ -1775,3 +1775,20 @@ h5{
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
+.tab-panel__info{
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--br);
+  background-color: var(--color-bg-alt);
+  margin-bottom: 1rem;
+  align-items: center;
+}
+.tab-panel__info svg{
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.tab-panel__info-content{
+  min-width: 0;
+}
