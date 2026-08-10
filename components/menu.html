@@ -27,7 +27,7 @@
     </nav>
     <div class="submenu">
         <a href="../setting.html">Настройки</a>
-        <button>Выход из аккаунта</button>
+        <button data-modal-open="exit">Выход из аккаунта</button>
     </div>
     <hr/>
     <div class="sidebar-info">
@@ -51,4 +51,23 @@
             </div>
         </div>
     </div>
+     <dialog data-modal="exit" class="classicModal">
+            <div class="modal-body">
+                <div class="modal-body__header">
+                    <h2>Выход</h2>
+                    <button data-modal-close class="close-icon">&times;</button>
+                </div>
+                <p>Вы действительно хотите выйти из личного кабинета?</p>
+                <br>
+                <div class="modal-actions">
+                    <div class="ui-right">
+                        <div style="display: flex; gap: 1rem;">
+                            <button class="btn-primary" data-modal-close>Выйти</button>
+                            <button class="btn-secondary" data-modal-close>Отмена</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </dialog>
 </aside>
