@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+
+    <link href="./assets/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="./assets/css/style.css?v=1.0" rel="stylesheet" type="text/css">
+
+    <script src="./components/my-menu.js" defer></script>
+    <script src="./components/my-footer.js" defer></script>
+
+    <title>Настройки</title>
+</head>
+<body>
+    <div id="page">
+        <my-menu></my-menu>
+        <div id="page-content">
+            <main>
+                <h1>Настройки</h1>
+                <div class="content">
+                    <div class="content-block">
+                        <div class="content-block__wrapper" style="max-width: 900px;">
+                            <div class="input-group">
+                                    <label>Статус</label>
+                                    <b>Стандартный</b> <small>(Данные ИНН и КПП проверены)</small>
+                                </div>
+                            <hr>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="inn">ИНН</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="inn" name="inn" value="123456789" >
+                                    </div>
+                                </div>
+                                <div class="input-group ">
+                                    <label for="kpp">КПП <small>(указывается только для филиалов)</small></label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="kpp" name="kpp" value="123456789">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="text-surname">Фамилия</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="text-surname" value="Фамилия">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="text-name">Имя</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="text-name" value="Имя">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="texxtpatronymic">Отчество</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="text-patronymic" value="Отчество">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="post-person">Должность ответственного лица</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="post-person">
+                                </div>
+                            </div>
+                            <fieldset>
+                                <legend>Контактные данные</legend>
+                                <div class="form-group confirm-wrapper">
+                                <div class="input-group">
+                                    <label for="mail-person">Эл. почта ответственного лица</label>
+                                    <div class="input-wrapper confirmed">
+                                        <input type="email" name="email" id="mail-person" value="info@mail.ru" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group confirm-wrapper">
+                                <div class="input-group">
+                                    <label for="tel-person">Телефон ответственного лица (мобильный)</label>
+                                    <div class="input-wrapper confirmed">
+                                        <input type="text" id="tel-person" value="+7 927 147-25-89" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <i>Изменение контактных данных возможно только через договорной отдел Заказчика</i>
+                            </fieldset>
+                            <button type="submit" class="btn-secondary indent-b-10">Изменить пароль</button>
+                            <hr>
+                            <button type="submit" class="btn-primary">Сохранить изменения</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <my-footer></my-footer>
+        </div>
+    </div>
+    <script src="./assets/js/main.js" defer></script>
+</body>
+</html>
