@@ -58,10 +58,28 @@
                         </div>
                     </div>
                     <div class="content-block content-padding">
-                        <h3>№12356789</h3>
+                        <div class="head-flex-sb">
+                            <h3>№12356789</h3>
+                            <div class="btn-tabsheader">
+                                <div class="btn-tabsheader__element btn-read">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check-icon lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                                    Отменить как прочитано
+                                </div>
+                                <div class="btn-tabsheader__element btn-delete btn-disablet">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash"><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                    Удалить
+                                </div>
+                            </div>
+                        </div>
                         <table class="table-ui">
                             <thead>
                                 <tr>
+                                    <th>
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </th>
                                     <th>Дата уведомления</th>
                                     <th>Тема уведомления</th>
                                     <th>Краткий текст</th>
@@ -70,7 +88,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               <tr>
+                               <tr class="unread">
+                                    <td>
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </td>
+                                    <td>30.07.2025</td>
+                                    <td>Вход в личный кабинет</td>
+                                    <td>Что такое электронное правительство и кто выполняет работы по его эк...</td>
+                                    <td><a href="" class="file-element">Название файла</a></td>
+                                    <td><div class="button-link" data-modal-open="look">Посмотреть</div></td>
+                                </tr>
+                                <tr class="unread">
+                                    <td>
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </td>
+                                    <td>30.07.2025</td>
+                                    <td>Вход в личный кабинет</td>
+                                    <td>Что такое электронное правительство и кто выполняет работы по его эк...</td>
+                                    <td><a href="" class="file-element">Название файла</a></td>
+                                    <td><div class="button-link" data-modal-open="look">Посмотреть</div></td>
+                                </tr>
+                                <tr class="unread">
+                                    <td>
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </td>
                                     <td>30.07.2025</td>
                                     <td>Вход в личный кабинет</td>
                                     <td>Что такое электронное правительство и кто выполняет работы по его эк...</td>
@@ -78,6 +128,12 @@
                                     <td><div class="button-link" data-modal-open="look">Посмотреть</div></td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </td>
                                     <td>30.07.2025</td>
                                     <td>Вход в личный кабинет</td>
                                     <td>Что такое электронное правительство и кто выполняет работы по его эк...</td>
@@ -85,6 +141,12 @@
                                     <td><div class="button-link" data-modal-open="look">Посмотреть</div></td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </td>
                                     <td>30.07.2025</td>
                                     <td>Вход в личный кабинет</td>
                                     <td>Что такое электронное правительство и кто выполняет работы по его эк...</td>
@@ -92,6 +154,12 @@
                                     <td><div class="button-link" data-modal-open="look">Посмотреть</div></td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </td>
                                     <td>30.07.2025</td>
                                     <td>Вход в личный кабинет</td>
                                     <td>Что такое электронное правительство и кто выполняет работы по его эк...</td>
@@ -99,20 +167,12 @@
                                     <td><div class="button-link" data-modal-open="look">Посмотреть</div></td>
                                 </tr>
                                 <tr>
-                                    <td>30.07.2025</td>
-                                    <td>Вход в личный кабинет</td>
-                                    <td>Что такое электронное правительство и кто выполняет работы по его эк...</td>
-                                    <td><a href="" class="file-element">Название файла</a></td>
-                                    <td><div class="button-link" data-modal-open="look">Посмотреть</div></td>
-                                </tr>
-                                <tr>
-                                    <td>30.07.2025</td>
-                                    <td>Вход в личный кабинет</td>
-                                    <td>Что такое электронное правительство и кто выполняет работы по его эк...</td>
-                                    <td><a href="" class="file-element">Название файла</a></td>
-                                    <td><div class="button-link" data-modal-open="look">Посмотреть</div></td>
-                                </tr>
-                                <tr>
+                                    <td>
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </td>
                                     <td>30.07.2025</td>
                                     <td>Вход в личный кабинет</td>
                                     <td>Что такое электронное правительство и кто выполняет работы по его эк...</td>
