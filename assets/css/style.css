@@ -1890,15 +1890,65 @@ tr.unread{
   color: var(--color-text-secondary);
 }
 
+/*новое---------------------------------*/
 
+.burger {
+    display: none;              /* скрыт на десктопе */
+    width: 40px;
+    height: 40px;
+    padding: 10px 8px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    z-index: 1001;
+}
+
+.burger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--color-text-black, #000);
+    border-radius: 2px;
+}
+
+/* ===== Backdrop ===== */
+.sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    z-index: 999;
+}
+
+.sidebar-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Блокировка скролла при открытом меню */
+body.menu-open {
+    overflow: hidden;
+}
 /* screens */
-@media screen and (max-width: 1400px){}
-@media screen and (max-width: 1200px){}
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1400px){
   #page-content {
     padding-left: 1rem;
     padding-right: 1rem;
   }
+  .content-block:has(.table-ui) {
+    width: 100%;
+    overflow: hidden;
+}
+}
+@media screen and (max-width: 1200px){
+}
+@media screen and (max-width: 1024px){
+  
   aside.sidebar {
     width: 180px;
     padding-top: 1rem;
@@ -1982,6 +2032,38 @@ tr.unread{
   .content-block__wrapper {
     padding: 10px;
   }
+
+  .burger {
+        display: flex;
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 1px 4px rgba(0,0,0,.15);
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 280px;
+        max-width: 85vw;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        overflow-y: auto;
+    }
+
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    #page-content {
+        flex: 1 1 100%;
+        width: 100%;
+    }
 }
 @media screen and (max-width: 520px){}
 /* screens */

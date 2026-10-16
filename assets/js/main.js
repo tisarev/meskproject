@@ -664,111 +664,207 @@ document.addEventListener('DOMContentLoaded', () => {
         initFaqAccordion();
 
         //-----------------------------------------------
-        // tabs
-        class TabsManager {
-            constructor(containerSelector) {
-                this.container = document.querySelector(containerSelector);
-                this.buttons = this.container.querySelectorAll('.tab-button');
-                this.panels = this.container.querySelectorAll('.tab-panel');
-                this.currentTab = 'tab1';
-                
-                this.init();
-            }
+//---------------------------------- новое
+    // tabs
+    class TabsManager {
+        constructor(containerSelector) {
+            this.container = document.querySelector(containerSelector);
+            this.buttons = [];
+            this.panels = [];
+            this.currentTab = null;
 
-            init() {
-                this.buttons.forEach(button => {
-                    button.addEventListener('click', (e) => {
-                        const tabId = e.target.getAttribute('data-tab');
-                        this.switchTab(tabId);
-                    });
+            // Если контейнера нет на странице — тихо выходим, не ломая остальной код
+            if (!this.container) return;
+
+            this.buttons = this.container.querySelectorAll('.tab-button');
+            this.panels = this.container.querySelectorAll('.tab-panel');
+            this.currentTab = 'tab1';
+
+            this.init();
+        }
+
+        init() {
+            if (!this.container) return;
+
+            this.buttons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const tabId = e.target.getAttribute('data-tab');
+                    this.switchTab(tabId);
                 });
+            });
 
-                // Поддержка клавиатуры
-                this.buttons.forEach((button, index) => {
-                    button.addEventListener('keydown', (e) => {
-                        let targetIndex;
-                        
-                        switch(e.key) {
-                            case 'ArrowLeft':
-                                e.preventDefault();
-                                targetIndex = index > 0 ? index - 1 : this.buttons.length - 1;
-                                this.buttons[targetIndex].focus();
-                                break;
-                            case 'ArrowRight':
-                                e.preventDefault();
-                                targetIndex = index < this.buttons.length - 1 ? index + 1 : 0;
-                                this.buttons[targetIndex].focus();
-                                break;
-                            case 'Home':
-                                e.preventDefault();
-                                this.buttons[0].focus();
-                                break;
-                            case 'End':
-                                e.preventDefault();
-                                this.buttons[this.buttons.length - 1].focus();
-                                break;
-                        }
-                    });
+            // Поддержка клавиатуры
+            this.buttons.forEach((button, index) => {
+                button.addEventListener('keydown', (e) => {
+                    let targetIndex;
+
+                    switch (e.key) {
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            targetIndex = index > 0 ? index - 1 : this.buttons.length - 1;
+                            this.buttons[targetIndex].focus();
+                            break;
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            targetIndex = index < this.buttons.length - 1 ? index + 1 : 0;
+                            this.buttons[targetIndex].focus();
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            this.buttons[0].focus();
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            this.buttons[this.buttons.length - 1].focus();
+                            break;
+                    }
                 });
-            }
+            });
+        }
 
-            switchTab(tabId) {
-                // Убираем активный класс со всех кнопок и панелей
-                this.buttons.forEach(btn => {
-                    btn.classList.remove('active');
-                    btn.setAttribute('aria-selected', 'false');
+        switchTab(tabId) {
+            if (!this.container) return;
+
+            // Убираем активный класс со всех кнопок и панелей
+            this.buttons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+
+            this.panels.forEach(panel => {
+                panel.classList.remove('active');
+            });
+
+            // Добавляем активный класс для выбранного таба
+            const activeButton = this.container.querySelector(`[data-tab="${tabId}"]`);
+            const activePanel = this.container.querySelector(`#${tabId}`);
+
+            if (activeButton && activePanel) {
+                activeButton.classList.add('active');
+                activeButton.setAttribute('aria-selected', 'true');
+                activePanel.classList.add('active');
+                this.currentTab = tabId;
+
+                // Сохраняем состояние в URL hash
+                window.location.hash = tabId;
+
+                // Пользовательское событие
+                const event = new CustomEvent('tabChanged', {
+                    detail: { tabId: tabId }
                 });
-                
-                this.panels.forEach(panel => {
-                    panel.classList.remove('active');
-                });
-
-                // Добавляем активный класс для выбранного таба
-                const activeButton = this.container.querySelector(`[data-tab="${tabId}"]`);
-                const activePanel = this.container.querySelector(`#${tabId}`);
-                
-                if (activeButton && activePanel) {
-                    activeButton.classList.add('active');
-                    activeButton.setAttribute('aria-selected', 'true');
-                    activePanel.classList.add('active');
-                    this.currentTab = tabId;
-                    
-                    // Сохраняем состояние в URL hash
-                    window.location.hash = tabId;
-                    
-                    // Пользовательское событие
-                    const event = new CustomEvent('tabChanged', {
-                        detail: { tabId: tabId }
-                    });
-                    this.container.dispatchEvent(event);
-                }
-            }
-
-            // Получить текущий активный таб
-            getCurrentTab() {
-                return this.currentTab;
+                this.container.dispatchEvent(event);
             }
         }
 
-        // Инициализация табов
-            const tabs = new TabsManager('.tabs-container');
-            
-            // Восстановление состояния из URL hash
-            const hash = window.location.hash.slice(1);
-            if (hash) {
-                tabs.switchTab(hash);
+        // Получить текущий активный таб
+        getCurrentTab() {
+            return this.currentTab;
+        }
+    }
+
+    // Инициализация табов (безопасно, если .tabs-container отсутствует на странице)
+    const tabs = new TabsManager('.tabs-container');
+
+    if (tabs && tabs.container) {
+        // Восстановление состояния из URL hash
+        const hash = window.location.hash.slice(1);
+        if (hash) {
+            tabs.switchTab(hash);
+        }
+
+        // Обработка изменения hash в URL
+        window.addEventListener('hashchange', () => {
+            const newHash = window.location.hash.slice(1);
+            if (newHash && newHash !== tabs.getCurrentTab()) {
+                tabs.switchTab(newHash);
             }
-            
-            // Обработка изменения hash в URL
-            window.addEventListener('hashchange', () => {
-                const newHash = window.location.hash.slice(1);
-                if (newHash && newHash !== tabs.getCurrentTab()) {
-                    tabs.switchTab(newHash);
+        });
+
+        // Пример использования пользовательского события
+        tabs.container.addEventListener('tabChanged', (e) => {
+            console.log('Переключен таб:', e.detail.tabId);
+        });
+    }
+
+
+
+                    //----------------------------------
+    // Бургер-меню для сайдбара (≤768px)
+    (function initBurgerMenu() {
+        function setup() {
+            const sidebar = document.querySelector('.sidebar');
+            const pageContent = document.getElementById('page-content');
+
+            // Элементов ещё нет — ждём
+            if (!sidebar || !pageContent) return false;
+
+            // Защита от повторной инициализации (на случай повторного срабатывания observer)
+            if (pageContent.querySelector('.burger')) return true;
+
+            // --- Создаём бургер ---
+            const burger = document.createElement('button');
+            burger.type = 'button';
+            burger.className = 'burger';
+            burger.setAttribute('aria-label', 'Открыть меню');
+            burger.setAttribute('aria-expanded', 'false');
+            burger.innerHTML = '<span></span><span></span><span></span>';
+
+            pageContent.prepend(burger);
+
+            // --- Создаём backdrop ---
+            const backdrop = document.createElement('div');
+            backdrop.className = 'sidebar-backdrop';
+            document.body.appendChild(backdrop);
+
+            // --- Логика открытия/закрытия ---
+            function openMenu() {
+                sidebar.classList.add('is-open');
+                backdrop.classList.add('is-open');
+                burger.setAttribute('aria-expanded', 'true');
+                document.body.classList.add('menu-open');
+            }
+
+            function closeMenu() {
+                sidebar.classList.remove('is-open');
+                backdrop.classList.remove('is-open');
+                burger.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('menu-open');
+            }
+
+            burger.addEventListener('click', () => {
+                sidebar.classList.contains('is-open') ? closeMenu() : openMenu();
+            });
+
+            backdrop.addEventListener('click', closeMenu);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && sidebar.classList.contains('is-open')) {
+                    closeMenu();
                 }
             });
-            
-            // Пример использования пользовательского события
-            document.querySelector('.tabs-container').addEventListener('tabChanged', (e) => {
-                console.log('Переключен таб:', e.detail.tabId);
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768 && sidebar.classList.contains('is-open')) {
+                    closeMenu();
+                }
             });
+
+            return true;
+        }
+
+        // Пробуем сразу
+        if (setup()) return;
+
+        // Если не получилось — ждём появления элементов
+        const observer = new MutationObserver(() => {
+            if (setup()) {
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    })();
 });
